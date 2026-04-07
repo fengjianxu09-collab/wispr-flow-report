@@ -7,31 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        wispr: {
-                            teal: '#00BFA5',
-                            tealLight: '#00E5B8',
-                            tealDark: '#009688',
-                            black: '#000000',
-                            gray: '#666666',
-                            lightGray: '#F5F5F5'
-                        }
-                    },
-                    fontFamily: {
-                        space: ['Space Grotesk', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
-                        mono: ['Roboto Mono', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         * {
             margin: 0;
@@ -40,7 +17,7 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #FFFFFF;
             color: #000000;
             line-height: 1.6;
@@ -50,7 +27,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .fade-in.visible {
@@ -58,503 +35,701 @@
             transform: translateY(0);
         }
         
-        .hover-glow {
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 120px 0;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+        
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #666666;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        
+        .metric-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            border-radius: 16px;
+            padding: 40px 32px;
             transition: all 0.3s ease;
         }
         
-        .hover-glow:hover {
-            box-shadow: 0 0 20px rgba(0, 191, 165, 0.3);
+        .metric-card:hover {
+            border-color: #000000;
             transform: translateY(-2px);
         }
         
-        .wave-animation {
-            animation: wave 3s ease-in-out infinite;
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
         }
         
-        @keyframes wave {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.2); }
+        .metric-label {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 4px;
+            font-weight: 500;
         }
         
-        .timeline-line::before {
-            content: '';
+        .metric-delta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #000000;
+            font-weight: 500;
+        }
+        
+        .section-header {
+            margin-bottom: 80px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: #FAFAFA;
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: #F5F5F5;
+            transform: translateY(-4px);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            padding-bottom: 80px;
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .timeline-number {
             position: absolute;
-            left: 20px;
+            left: 0;
             top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, #00BFA5, #E0E0E0);
+            width: 40px;
+            height: 40px;
+            background: #000000;
+            color: #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: #000000;
+            color: #FFFFFF;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+        
+        .btn-arrow {
+            width: 20px;
+            height: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        
+        th {
+            text-align: left;
+            padding: 20px 16px;
+            border-bottom: 2px solid #000000;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            padding: 20px 16px;
+            border-bottom: 1px solid #E5E5E5;
+            font-size: 15px;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: #FAFAFA;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .badge-check {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+        
+        .badge-cross {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 60px 0;
+        }
+        
+        .comparison-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .comparison-item p {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.7;
+        }
+        
+        .testimonial-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+        
+        .testimonial-card {
+            background: #FAFAFA;
+            border-radius: 20px;
+            padding: 40px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            color: #000000;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .testimonial-role {
+            font-size: 13px;
+            color: #666666;
+            margin-top: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+            }
+            
+            h2 {
+                font-size: 32px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .metric-value {
+                font-size: 42px;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="bg-white">
-    <div id="root"></div>
-    
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
-        
-        // 数据
-        const metrics = [
-            { value: '$81M', label: 'Total Funding', delta: 'Industry Leading' },
-            { value: '20%', label: 'Conversion Rate', delta: '5x Industry Avg' },
-            { value: '70%', label: '12-Month Retention', delta: '75% vs Industry' },
-            { value: '100x', label: 'YoY User Growth', delta: '10x Industry Avg' },
-            { value: '270+', label: 'Fortune 500 Clients', delta: 'Market Leading' },
-            { value: '12.77%', label: 'CER Error Rate', delta: 'Industry Average' }
-        ];
-        
-        const competitors = [
-            { name: 'Wispr Flow', funding: '$81M', platforms: 'Mac/Win/iOS/Android', offline: false, pricing: '$15/mo', cer: '12.77%', advantage: 'Cross-platform, Enterprise Compliance' },
-            { name: 'Google Eloquent', funding: 'Google-backed', platforms: 'iOS (Android planned)', offline: true, pricing: 'Free', cer: '-', advantage: 'Free, Offline, Gemma' },
-            { name: 'Willow', funding: '$4.2M (YC)', platforms: 'Mac/Win/iOS', offline: true, pricing: '~$15/mo', cer: '-', advantage: 'Local Storage, Privacy First' },
-            { name: 'QuQu', funding: 'Open Source', platforms: 'Win/Mac/Linux', offline: true, pricing: 'Free', cer: '-', advantage: 'Open Source, Chinese Optimized' },
-            { name: 'Typeless', funding: '-', platforms: 'Mac', offline: true, pricing: 'Annual', cer: '7.00%', advantage: 'Industry-leading Accuracy' }
-        ];
-        
-        const trends = [
-            {
-                title: 'Free vs Paid (Google Entry)',
-                data: [
-                    { dimension: 'Pricing Model', current: '$12-15/mo mainstream', forecast: 'Free tier + Paid tier', impact: 'Pressure on SMB vendors' },
-                    { dimension: 'Google Advantage', current: '-', forecast: 'Free + Offline + Gemma + Android preload', impact: 'May disrupt pricing' },
-                    { dimension: 'Wispr Response', current: 'Enterprise compliance', forecast: 'Strengthen enterprise tier, avoid price war', impact: 'Focus on 270+ Fortune 500' }
-                ]
-            },
-            {
-                title: 'Offline vs Cloud (Privacy Concerns)',
-                data: [
-                    { dimension: 'Representative Products', current: 'Wispr Flow', forecast: 'Willow, Google, QuQu', impact: 'Shifting to offline' },
-                    { dimension: 'Advantages', current: 'Fast model updates, powerful features', forecast: 'Privacy protection, no internet required', impact: 'Privacy sensitivity increasing' },
-                    { dimension: 'Disadvantages', current: 'Privacy concerns, requires internet', forecast: 'Slower model updates, limited features', impact: 'Enterprise users more concerned' }
-                ]
-            },
-            {
-                title: 'General vs Professional (Customization)',
-                data: [
-                    { dimension: 'Representative Products', current: 'Google Eloquent', forecast: 'Wispr Flow, Typeless', impact: 'Shifting to professional' },
-                    { dimension: 'Features', current: 'Basic voice-to-text', forecast: 'Custom vocabulary, style matching', impact: 'Professional demand growing' },
-                    { dimension: 'Users', current: 'Mass market', forecast: 'Legal, Medical, Technical docs', impact: 'High willingness to pay in verticals' }
-                ]
-            }
-        ];
-        
-        const swot = {
-            strengths: [
-                'Cross-platform coverage (Mac/Win/iOS/Android)',
-                'Enterprise compliance certifications (SOC 2, HIPAA)',
-                'High retention rate (70% annual retention)',
-                '270+ Fortune 500 endorsements',
-                'Intent-driven transcription (differentiation)'
-            ],
-            weaknesses: [
-                'CER 12.77% lower than Typeless (7%)',
-                'Insufficient Chinese optimization',
-                'Requires internet (vs competitors offline)',
-                'Price-sensitive users may churn',
-                'Slightly higher learning curve'
-            ],
-            opportunities: [
-                'Chinese market (QuQu proves demand)',
-                'Open source model integration (FunASR)',
-                'Enterprise customization (vertical industries)',
-                'Hardware partnerships (AR glasses, etc.)',
-                'Voice OS vision'
-            ],
-            threats: [
-                'Google free entry',
-                'Open source alternatives (QuQu, Voquill)',
-                'Price war compressing margins',
-                'Privacy concerns (cloud processing)',
-                'Lowered technical barriers (new entrants)'
-            ]
-        };
-        
-        const recommendations = [
-            {
-                period: 'Short-term (2026)',
-                priority: 'high',
-                items: [
-                    'Integrate FunASR for Chinese version',
-                    'Launch offline enterprise version',
-                    'Reduce error rate to below 5%',
-                    'Android tablet optimization'
-                ]
-            },
-            {
-                period: 'Mid-term (2027)',
-                priority: 'medium',
-                items: [
-                    'Voice OS strategy launch',
-                    'Meeting notes feature',
-                    'API access',
-                    'Real-time translation'
-                ]
-            },
-            {
-                period: 'Long-term (2028-2030)',
-                priority: 'low',
-                items: [
-                    'Brain-computer interface R&D',
-                    'AR glasses partnership',
-                    'Hardware self-development'
-                ]
-            }
-        ];
-        
-        const productStages = [
-            { stage: 'MVP', time: '2024 Q4', features: ['Basic voice-to-text', 'Cross-app usage', 'Auto-punctuation', 'Filer word removal', 'English support', 'Hotkey activation'], metrics: ['DAU>1k', 'Retention>40%', 'NPS>30'] },
-            { stage: 'Growth', time: '2025', features: ['Windows version', 'iOS version', 'Multi-language support', 'Personal dictionary', 'Snippets', 'Style matching', 'Enterprise compliance'], metrics: ['MAU>100k', 'Conversion>15%', 'Enterprise>100'] },
-            { stage: 'Maturity', time: '2026-2027', features: ['Android version', 'Offline mode', 'Chinese optimization', 'Command mode', 'Meeting notes', 'Real-time translation', 'API access'], metrics: ['MAU>1M', 'Revenue>$50M', 'Fortune 500>500'] },
-            { stage: 'Platform', time: '2028+', features: ['Voice OS', 'Multimodal input', 'AR glasses integration', 'Brain-computer interface', 'Personalized AI assistant'], metrics: ['Valuation>$1B', 'Market share>20%', 'Partners>100'] }
-        ];
-        
-        // 组件
-        function Header() {
-            return (
-                <header className="py-20 border-b border-gray-200">
-                    <div className="max-w-6xl mx-auto px-6 text-center">
-                        <h1 className="font-space text-6xl font-bold text-wispr-black mb-4 tracking-tight">
-                            Wispr Flow 2026
-                        </h1>
-                        <p className="font-inter text-lg text-wispr-gray">
-                            Market Research Report | Data Confidence: <span className="font-mono text-wispr-teal font-medium">85-90%</span> | April 7, 2026
-                        </p>
-                    </div>
-                </header>
-            );
-        }
-        
-        function MetricsGrid() {
-            return (
-                <section className="py-16">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {metrics.map((metric, index) => (
-                                <div key={index} className="bg-white border border-gray-100 rounded-2xl p-8 hover-glow fade-in">
-                                    <div className="font-mono text-5xl font-semibold text-wispr-teal mb-2">
-                                        {metric.value}
-                                    </div>
-                                    <div className="font-inter text-sm text-wispr-gray mb-1">
-                                        {metric.label}
-                                    </div>
-                                    <div className="font-mono text-xs text-wispr-teal-dark font-medium">
-                                        {metric.delta}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function MarketCompetition() {
-            return (
-                <section className="py-16 fade-in">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="font-space text-4xl font-semibold text-wispr-black mb-8">
-                            Market Competition
-                        </h2>
-                        <div className="overflow-x-auto">
-                            <table className="w-full">
-                                <thead>
-                                    <tr className="bg-wispr-teal text-white">
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Product</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Funding</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Platforms</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Offline</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Pricing</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">CER</th>
-                                        <th className="py-4 px-6 text-left font-space font-medium text-sm">Core Advantage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {competitors.map((competitor, index) => (
-                                        <tr key={index} className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${competitor.name === 'Wispr Flow' ? 'bg-teal-50' : ''}`}>
-                                            <td className={`py-4 px-6 font-inter ${competitor.name === 'Wispr Flow' ? 'font-semibold text-wispr-teal-dark' : 'text-wispr-gray'}`}>
-                                                {competitor.name}
-                                            </td>
-                                            <td className="py-4 px-6 font-mono text-sm text-wispr-gray">{competitor.funding}</td>
-                                            <td className="py-4 px-6 font-mono text-sm text-wispr-gray">{competitor.platforms}</td>
-                                            <td className="py-4 px-6">
-                                                {competitor.offline ? (
-                                                    <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-mono font-medium">✅</span>
-                                                ) : (
-                                                    <span className="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-mono font-medium">❌</span>
-                                                )}
-                                            </td>
-                                            <td className="py-4 px-6 font-mono text-sm text-wispr-gray">{competitor.pricing}</td>
-                                            <td className="py-4 px-6 font-mono text-sm text-wispr-gray">{competitor.cer}</td>
-                                            <td className="py-4 px-6">
-                                                <span className="inline-block px-3 py-1 bg-wispr-teal/10 text-wispr-teal-dark rounded-full text-xs font-mono font-medium">
-                                                    {competitor.advantage}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function TechnologyFlow() {
-            return (
-                <section className="py-16 fade-in">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="font-space text-4xl font-semibold text-wispr-black mb-8">
-                            Technology Stack
-                        </h2>
-                        <div className="bg-gray-50 rounded-2xl p-12">
-                            <div className="flex items-center justify-between">
-                                <div className="text-center flex-1">
-                                    <div className="w-32 h-32 mx-auto mb-4 relative">
-                                        <svg viewBox="0 0 100 100" className="w-full h-full">
-                                            <path d="M10,50 Q30,30 50,50 T90,50" stroke="#00BFA5" strokeWidth="3" fill="none" className="wave-animation"/>
-                                            <path d="M10,50 Q30,70 50,50 T90,50" stroke="#00E5B8" strokeWidth="2" fill="none" className="wave-animation" style={{animationDelay: '0.5s'}}/>
-                                        </svg>
-                                    </div>
-                                    <div className="font-mono text-sm text-wispr-teal font-medium mb-2">Voice Input</div>
-                                    <div className="font-inter text-xs text-wispr-gray">Raw Audio Waveform</div>
-                                </div>
-                                
-                                <div className="flex items-center">
-                                    <div className="text-center px-8">
-                                        <div className="w-24 h-24 mx-auto mb-4 bg-white border-2 border-wispr-teal rounded-xl flex items-center justify-center">
-                                            <div className="text-center">
-                                                <div className="font-mono text-xs font-bold text-wispr-teal">ASR</div>
-                                                <div className="font-mono text-xs text-wispr-gray">+ LLM</div>
-                                            </div>
-                                        </div>
-                                        <div className="font-inter text-xs text-wispr-gray">Processing Module</div>
-                                    </div>
-                                </div>
-                                
-                                <div className="text-center flex-1">
-                                    <div className="w-32 h-32 mx-auto mb-4 bg-white border border-gray-200 rounded-xl flex items-center justify-center">
-                                        <div className="font-mono text-xs text-wispr-black p-4 text-left">
-                                            <div>Meeting notes</div>
-                                            <div className="text-wispr-gray">• Action items</div>
-                                            <div className="text-wispr-gray">• Key decisions</div>
-                                        </div>
-                                    </div>
-                                    <div className="font-mono text-sm text-wispr-teal font-medium mb-2">Structured Text</div>
-                                    <div className="font-inter text-xs text-wispr-gray">Purified & Reshaped</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function ProductTimeline() {
-            return (
-                <section className="py-16 fade-in">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="font-space text-4xl font-semibold text-wispr-black mb-8">
-                            Product Evolution
-                        </h2>
-                        <div className="timeline-line relative pl-16">
-                            {productStages.map((stage, index) => (
-                                <div key={index} className="relative mb-12 last:mb-0">
-                                    <div className="absolute left-0 top-0 w-10 h-10 bg-white border-2 border-wispr-teal rounded-full flex items-center justify-center">
-                                        <span className="font-mono text-sm font-bold text-wispr-teal">{index + 1}</span>
-                                    </div>
-                                    <div className="bg-white border border-gray-100 rounded-2xl p-6 ml-4 hover-glow">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <div>
-                                                <h3 className="font-space text-xl font-semibold text-wispr-black mb-1">{stage.stage}</h3>
-                                                <div className="font-mono text-sm text-wispr-teal">{stage.time}</div>
-                                            </div>
-                                            {index < 2 && (
-                                                <div className="flex gap-2">
-                                                    {stage.metrics.map((metric, i) => (
-                                                        <span key={i} className="px-3 py-1 bg-wispr-teal/10 text-wispr-teal-dark rounded-full text-xs font-mono font-medium">
-                                                            {metric}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                                            {stage.features.map((feature, i) => (
-                                                <div key={i} className="flex items-center">
-                                                    <div className={`w-2 h-2 rounded-full mr-2 ${index < 2 ? 'bg-wispr-teal' : 'bg-gray-300'}`}></div>
-                                                    <span className={`text-sm ${index < 2 ? 'text-wispr-black' : 'text-wispr-gray'}`}>{feature}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function SWOTAnalysis() {
-            return (
-                <section className="py-16 fade-in">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="font-space text-4xl font-semibold text-wispr-black mb-8">
-                            SWOT Analysis
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-green-50 border border-green-100 rounded-2xl p-6">
-                                <h3 className="font-space text-lg font-semibold text-green-800 mb-4">Strengths</h3>
-                                <ul className="space-y-2">
-                                    {swot.strengths.map((item, i) => (
-                                        <li key={i} className="flex items-start">
-                                            <span className="text-green-600 mr-2">✓</span>
-                                            <span className="text-sm text-gray-700">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="bg-red-50 border border-red-100 rounded-2xl p-6">
-                                <h3 className="font-space text-lg font-semibold text-red-800 mb-4">Weaknesses</h3>
-                                <ul className="space-y-2">
-                                    {swot.weaknesses.map((item, i) => (
-                                        <li key={i} className="flex items-start">
-                                            <span className="text-red-600 mr-2">✗</span>
-                                            <span className="text-sm text-gray-700">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-                                <h3 className="font-space text-lg font-semibold text-blue-800 mb-4">Opportunities</h3>
-                                <ul className="space-y-2">
-                                    {swot.opportunities.map((item, i) => (
-                                        <li key={i} className="flex items-start">
-                                            <span className="text-blue-600 mr-2">○</span>
-                                            <span className="text-sm text-gray-700">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="bg-orange-50 border border-orange-100 rounded-2xl p-6">
-                                <h3 className="font-space text-lg font-semibold text-orange-800 mb-4">Threats</h3>
-                                <ul className="space-y-2">
-                                    {swot.threats.map((item, i) => (
-                                        <li key={i} className="flex items-start">
-                                            <span className="text-orange-600 mr-2">⚠</span>
-                                            <span className="text-sm text-gray-700">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function Recommendations() {
-            const getPriorityClass = (priority) => {
-                switch(priority) {
-                    case 'high': return 'priority-high';
-                    case 'medium': return 'priority-medium';
-                    case 'low': return 'priority-low';
-                    default: return '';
-                }
-            };
-            
-            return (
-                <section className="py-16 fade-in">
-                    <div className="max-w-6xl mx-auto px-6">
-                        <h2 className="font-space text-4xl font-semibold text-wispr-black mb-8">
-                            Strategic Recommendations
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {recommendations.map((rec, index) => (
-                                <div key={index} className="bg-white border border-gray-100 rounded-2xl p-6 hover-glow">
-                                    <h3 className="font-space text-xl font-semibold text-wispr-black mb-3">{rec.period}</h3>
-                                    <div className={`inline-block px-4 py-2 rounded-full text-xs font-mono font-medium mb-4 ${
-                                        rec.priority === 'high' ? 'bg-red-50 text-red-700 border border-red-200' :
-                                        rec.priority === 'medium' ? 'bg-orange-50 text-orange-700 border border-orange-200' :
-                                        'bg-green-50 text-green-700 border border-green-200'
-                                    }`}>
-                                        Priority: {rec.priority.charAt(0).toUpperCase() + rec.priority.slice(1)}
-                                    </div>
-                                    <ul className="space-y-3">
-                                        {rec.items.map((item, i) => (
-                                            <li key={i} className="flex items-start">
-                                                <span className="text-wispr-teal mr-2 font-mono">→</span>
-                                                <span className="text-sm text-wispr-gray">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-        
-        function Footer() {
-            return (
-                <footer className="py-12 border-t border-gray-200">
-                    <div className="max-w-6xl mx-auto px-6 text-center">
-                        <p className="font-inter text-sm text-wispr-gray mb-2">
-                            📊 Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
-                        </p>
-                        <p className="font-inter text-sm text-wispr-gray mb-2">
-                            📅 Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐
-                        </p>
-                        <p className="font-inter text-sm text-wispr-gray mb-4">
-                            🔗 <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" className="text-wispr-teal hover:underline">Feishu Report</a>
-                        </p>
-                        <p className="font-inter text-xs text-wispr-gray">
-                            ⚠️ This report is for reference only and does not constitute investment advice
-                        </p>
-                    </div>
-                </footer>
-            );
-        }
-        
-        function App() {
-            useEffect(() => {
-                const observer = new IntersectionObserver(
-                    (entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
-                            }
-                        });
-                    },
-                    { threshold: 0.1 }
-                );
-                
-                document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-                
-                return () => observer.disconnect();
-            }, []);
-            
-            return (
-                <div className="min-h-screen bg-white">
-                    <Header />
-                    <MetricsGrid />
-                    <MarketCompetition />
-                    <TechnologyFlow />
-                    <ProductTimeline />
-                    <SWOTAnalysis />
-                    <Recommendations />
-                    <Footer />
+<body>
+    <!-- Hero Section -->
+    <section style="padding: 160px 0 120px;">
+        <div class="container">
+            <div class="fade-in">
+                <h1>Wispr Flow 2026<br>Market Research</h1>
+                <p class="subtitle" style="max-width: 600px; margin-top: 24px;">
+                    Comprehensive market analysis of the voice-to-text AI landscape. Data confidence: 85-90%. April 7, 2026.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section style="background: #FAFAFA; padding: 80px 0;">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="metric-card fade-in">
+                    <div class="metric-value">$81M</div>
+                    <div class="metric-label">Total Funding</div>
+                    <div class="metric-delta">Industry Leading</div>
                 </div>
-            );
-        }
+                <div class="metric-card fade-in">
+                    <div class="metric-value">20%</div>
+                    <div class="metric-label">Conversion Rate</div>
+                    <div class="metric-delta">5x Industry Average</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-value">70%</div>
+                    <div class="metric-label">12-Month Retention</div>
+                    <div class="metric-delta">75% vs Industry</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-value">100x</div>
+                    <div class="metric-label">YoY User Growth</div>
+                    <div class="metric-delta">10x Industry Average</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-value">270+</div>
+                    <div class="metric-label">Fortune 500 Clients</div>
+                    <div class="metric-delta">Market Leading</div>
+                </div>
+                <div class="metric-card fade-in">
+                    <div class="metric-value">12.77%</div>
+                    <div class="metric-label">CER Error Rate</div>
+                    <div class="metric-delta">Industry Average</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Competition -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Market Competition</h2>
+                <p class="subtitle">Competitive landscape analysis of major voice-to-text players</p>
+            </div>
+            
+            <div class="fade-in">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Funding</th>
+                            <th>Platforms</th>
+                            <th>Offline</th>
+                            <th>Pricing</th>
+                            <th>CER</th>
+                            <th>Core Advantage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #FAFAFA;">
+                            <td style="font-weight: 600;">Wispr Flow</td>
+                            <td>$81M</td>
+                            <td>Mac/Win/iOS/Android</td>
+                            <td><span class="badge badge-cross">✕</span></td>
+                            <td>$15/mo</td>
+                            <td>12.77%</td>
+                            <td>Cross-platform, Enterprise</td>
+                        </tr>
+                        <tr>
+                            <td>Google Eloquent</td>
+                            <td>Google-backed</td>
+                            <td>iOS (Android planned)</td>
+                            <td><span class="badge badge-check">✓</span></td>
+                            <td>Free</td>
+                            <td>-</td>
+                            <td>Free, Offline, Gemma</td>
+                        </tr>
+                        <tr>
+                            <td>Willow</td>
+                            <td>$4.2M (YC)</td>
+                            <td>Mac/Win/iOS</td>
+                            <td><span class="badge badge-check">✓</span></td>
+                            <td>~$15/mo</td>
+                            <td>-</td>
+                            <td>Local Storage, Privacy</td>
+                        </tr>
+                        <tr>
+                            <td>QuQu</td>
+                            <td>Open Source</td>
+                            <td>Win/Mac/Linux</td>
+                            <td><span class="badge badge-check">✓</span></td>
+                            <td>Free</td>
+                            <td>-</td>
+                            <td>Open Source, Chinese</td>
+                        </tr>
+                        <tr>
+                            <td>Typeless</td>
+                            <td>-</td>
+                            <td>Mac</td>
+                            <td><span class="badge badge-check">✓</span></td>
+                            <td>Annual</td>
+                            <td>7.00%</td>
+                            <td>Industry Accuracy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Comparison -->
+    <section style="background: #FAFAFA;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Technology Stack</h2>
+                <p class="subtitle">From voice input to structured text</p>
+            </div>
+            
+            <div class="comparison-grid fade-in">
+                <div class="comparison-item">
+                    <h4>Voice Input</h4>
+                    <p>Raw audio waveform with natural speech patterns, filler words, and verbal redundancies.</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>ASR + LLM Processing</h4>
+                    <p>Automatic speech recognition combined with large language model post-processing for intent understanding.</p>
+                </div>
+            </div>
+            
+            <div class="comparison-grid fade-in">
+                <div class="comparison-item">
+                    <h4 style="color: #666666;">Before</h4>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #FFFFFF; padding: 24px; border-radius: 12px; border: 1px solid #E5E5E5;">
+                        "Umm, hope your week has started well… I was talking to Cheyene earlier but reception was really bad and I think their going to handle the first part of the project, but I'm not totally sure..."
+                    </p>
+                </div>
+                <div class="comparison-item">
+                    <h4>After</h4>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #FFFFFF; padding: 24px; border-radius: 12px; border: 1px solid #000000;">
+                        Hope your week is off to a good start. I was talking to Cheyene earlier, but the reception was really bad. I think they're going to handle the first part of the project, but I'm not totally sure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Evolution -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Product Evolution</h2>
+                <p class="subtitle">Four-stage roadmap from MVP to platform</p>
+            </div>
+            
+            <div class="fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <h3>MVP Stage</h3>
+                    <p style="color: #666666; margin-bottom: 16px;">2024 Q4</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Basic voice-to-text</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Cross-app usage</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Auto-punctuation</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Filler word removal</span>
+                    </div>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">DAU&gt;1k • Retention&gt;40% • NPS&gt;30</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <h3>Growth Stage</h3>
+                    <p style="color: #666666; margin-bottom: 16px;">2025</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Windows version</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">iOS version</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Multi-language</span>
+                        <span class="badge" style="background: #000000; color: #FFFFFF;">Enterprise compliance</span>
+                    </div>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">MAU&gt;100k • Conversion&gt;15% • Enterprise&gt;100</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <h3>Maturity Stage</h3>
+                    <p style="color: #666666; margin-bottom: 16px;">2026-2027</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Android version</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Offline mode</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Chinese optimization</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Meeting notes</span>
+                    </div>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">MAU&gt;1M • Revenue&gt;$50M • Fortune 500&gt;500</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <h3>Platform Stage</h3>
+                    <p style="color: #666666; margin-bottom: 16px;">2028+</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Voice OS</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Multimodal input</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">AR glasses</span>
+                        <span class="badge" style="background: #E5E5E5; color: #666666;">Brain-computer</span>
+                    </div>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">Valuation&gt;$1B • Market share&gt;20% • Partners&gt;100</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWOT Analysis -->
+    <section style="background: #FAFAFA;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>SWOT Analysis</h2>
+                <p class="subtitle">Strategic assessment of market position</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
+                <div class="feature-card">
+                    <h3>Strengths</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ Cross-platform coverage (Mac/Win/iOS/Android)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ Enterprise compliance (SOC 2, HIPAA)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ High retention (70% annual)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ 270+ Fortune 500 endorsements</li>
+                        <li style="padding: 8px 0;">✓ Intent-driven transcription</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Weaknesses</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ CER 12.77% vs Typeless 7%</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Limited Chinese optimization</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Requires internet connection</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Price-sensitive user churn</li>
+                        <li style="padding: 8px 0;">✕ Higher learning curve</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Opportunities</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Chinese market expansion</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Open source integration (FunASR)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Enterprise customization</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Hardware partnerships</li>
+                        <li style="padding: 8px 0;">○ Voice OS vision</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Threats</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Google free entry</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Open source alternatives</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Price war margins</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Privacy concerns</li>
+                        <li style="padding: 8px 0;">⚠ Lowered technical barriers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Users Say</h2>
+                <p class="subtitle">Real feedback from professionals</p>
+            </div>
+            
+            <div class="testimonial-carousel fade-in">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I was able to dictate ~70% of our Q2 board doc with Wispr, it was a massive time saver!"</p>
+                    <div class="testimonial-author">Jeff Seibert</div>
+                    <div class="testimonial-role">CEO, Digits AI</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"This is the best AI product I've used since ChatGPT."</p>
+                    <div class="testimonial-author">Rahul Vohra</div>
+                    <div class="testimonial-role">CEO, Superhuman</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've been using Wispr almost every day since I downloaded it. It's probably my favorite part of the day."</p>
+                    <div class="testimonial-author">Suzanne Xie</div>
+                    <div class="testimonial-role">Partner, Neo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section style="background: #FAFAFA;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Strategic Recommendations</h2>
+                <p class="subtitle">Short, mid, and long-term priorities</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
+                <div class="feature-card" style="background: #FFFFFF;">
+                    <h3 style="color: #C62828;">Short-term (2026)</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Integrate FunASR for Chinese</span>
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Launch offline enterprise version</span>
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Reduce error rate to &lt;5%</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Android tablet optimization</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" style="background: #FFFFFF;">
+                    <h3 style="color: #F57C00;">Mid-term (2027)</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Voice OS strategy launch</span>
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Meeting notes feature</span>
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>API access</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Real-time translation</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" style="background: #FFFFFF;">
+                    <h3 style="color: #2E7D32;">Long-term (2028-2030)</h3>
+                    <ul style="list-style: none; margin-top: 16px;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Brain-computer interface R&D</span>
+                        </li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>AR glasses partnership</span>
+                        </li>
+                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
+                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span>Hardware self-development</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section style="padding: 80px 0; border-top: 1px solid #E5E5E5;">
+        <div class="container">
+            <div class="fade-in">
+                <p style="font-size: 14px; color: #666666; margin-bottom: 8px;">
+                    Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
+                </p>
+                <p style="font-size: 14px; color: #666666; margin-bottom: 8px;">
+                    Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐
+                </p>
+                <p style="font-size: 14px; color: #666666; margin-bottom: 24px;">
+                    <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" style="color: #000000; text-decoration: underline;">View Full Report on Feishu</a>
+                </p>
+                <p style="font-size: 13px; color: #999999;">
+                    ⚠️ This report is for reference only and does not constitute investment advice
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Fade in animation
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
         
-        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
