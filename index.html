@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎤 Wispr Flow 2026 年市场调研报告 - 完整版</title>
+    <title>Wispr Flow 2026 Market Research Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --wispr-teal: #00BFA5;
+            --wispr-teal-light: #00E5B8;
+            --wispr-teal-dark: #009688;
+            --background: #FFFFFF;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --border-color: #E0E0E0;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,85 +31,170 @@
         }
         
         body {
-            font-family: 'Rajdhani', 'Microsoft YaHei', sans-serif;
-            background: #000011;
-            color: #00ffff;
-            min-height: 100vh;
-            line-height: 1.8;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* 粒子背景动画 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--wispr-teal);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-100px) translateX(50px); opacity: 0.5; }
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
         
+        /* Header */
         header {
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 100, 255, 0.1));
-            border: 2px solid #00ffff;
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
         }
         
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8em;
-            color: #00ffff;
-            text-shadow: 0 0 20px #00ffff;
-            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
         }
         
         .subtitle {
-            font-size: 1.3em;
-            color: #00ccff;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
         
+        .subtitle strong {
+            color: var(--wispr-teal);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--wispr-teal);
+        }
+        
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.8em;
+            font-weight: 600;
+            color: var(--wispr-teal);
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+        
+        .metric-label {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        .metric-delta {
+            font-size: 0.85em;
+            color: var(--wispr-teal-dark);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+        
+        /* Sections */
         .section {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(0, 255, 255, 0.05));
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            margin-bottom: 60px;
         }
         
         .section-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2em;
-            color: #00ffff;
-            margin-bottom: 25px;
-            border-bottom: 3px solid #00ffff;
-            padding-bottom: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--wispr-teal);
+            letter-spacing: -0.02em;
         }
         
         .section-content {
             font-size: 1.05em;
-            line-height: 1.9;
-            color: #00ccff;
+            line-height: 1.8;
+            color: var(--text-secondary);
         }
         
         .section-content h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #00ffff;
-            font-size: 1.5em;
-            margin: 25px 0 15px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
         }
         
         .section-content h4 {
-            color: #00ccff;
-            font-size: 1.2em;
-            margin: 20px 0 12px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15em;
+            font-weight: 600;
+            color: var(--wispr-teal-dark);
+            margin: 24px 0 12px 0;
         }
         
         .section-content p {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         
         .section-content ul, .section-content ol {
-            margin-left: 30px;
-            margin-bottom: 15px;
+            margin-left: 24px;
+            margin-bottom: 16px;
         }
         
         .section-content li {
@@ -100,171 +202,161 @@
         }
         
         .section-content strong {
-            color: #00ffff;
+            color: var(--text-primary);
+            font-weight: 600;
         }
         
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .metric-card {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(0, 255, 255, 0.05));
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
-        
-        .metric-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5em;
-            font-weight: 900;
-            background: linear-gradient(45deg, #00ffff, #0088ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-        
-        .metric-label {
-            font-size: 1.1em;
-            color: #00ccff;
-            margin-bottom: 8px;
-        }
-        
-        .metric-delta {
-            font-size: 0.95em;
-            color: #00ff88;
-            font-weight: bold;
-        }
-        
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .chart-card {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(0, 255, 255, 0.05));
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
-        
-        .chart-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em;
-            color: #00ffff;
-            text-align: center;
-            margin-bottom: 20px;
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background: rgba(0, 100, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
+            background: var(--background);
         }
         
         table th {
-            background: linear-gradient(135deg, #0066ff, #00ffff);
-            color: #000;
-            padding: 15px;
+            background: var(--wispr-teal);
+            color: #FFFFFF;
+            padding: 16px;
             text-align: left;
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9em;
+            letter-spacing: 0.02em;
         }
         
         table td {
-            padding: 15px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            color: #00ccff;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+        
+        table tr:last-child td {
+            border-bottom: none;
         }
         
         table tr:hover {
-            background: rgba(0, 255, 255, 0.1);
+            background: rgba(0, 191, 165, 0.05);
         }
         
         .badge {
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.8em;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
         }
         
         .badge-high {
-            background: linear-gradient(45deg, #00ff88, #00ffcc);
-            color: #000;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            background: rgba(0, 191, 165, 0.15);
+            color: var(--wispr-teal-dark);
+            border: 1px solid var(--wispr-teal);
         }
         
         .badge-medium {
-            background: linear-gradient(45deg, #ffaa00, #ffcc00);
-            color: #000;
-            box-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+            background: rgba(255, 170, 0, 0.15);
+            color: #FF9800;
+            border: 1px solid #FF9800;
         }
         
         .badge-low {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+            background: rgba(255, 68, 68, 0.15);
+            color: #F44336;
+            border: 1px solid #F44336;
         }
         
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+        
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .chart-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        /* Recommendations */
         .recommendations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            gap: 24px;
+            margin-top: 32px;
         }
         
         .recommendation-card {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.15), rgba(0, 255, 255, 0.1));
-            border: 2px solid #00ffff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .recommendation-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--wispr-teal);
         }
         
         .recommendation-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5em;
-            color: #00ffff;
-            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
         }
         
         .priority {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding: 8px 15px;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding: 6px 12px;
             border-radius: 20px;
             display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
         }
         
         .priority-high {
-            background: rgba(255, 68, 68, 0.2);
-            color: #ff6666;
-            border: 1px solid #ff4444;
+            background: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+            border: 1px solid #F44336;
         }
         
         .priority-medium {
-            background: rgba(255, 170, 0, 0.2);
-            color: #ffcc00;
-            border: 1px solid #ffaa00;
+            background: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+            border: 1px solid #FF9800;
         }
         
         .priority-low {
-            background: rgba(0, 255, 136, 0.2);
-            color: #00ff88;
-            border: 1px solid #00ff88;
+            background: rgba(0, 191, 165, 0.1);
+            color: var(--wispr-teal-dark);
+            border: 1px solid var(--wispr-teal);
         }
         
         .recommendation-card ul {
@@ -274,30 +366,31 @@
         
         .recommendation-card li {
             padding: 10px 0;
-            padding-left: 25px;
+            padding-left: 24px;
             position: relative;
-            color: #00ccff;
+            color: var(--text-secondary);
         }
         
         .recommendation-card li::before {
-            content: '▶';
+            content: '→';
             position: absolute;
             left: 0;
-            color: #00ffff;
+            color: var(--wispr-teal);
+            font-weight: 600;
         }
         
+        /* Footer */
         .footer {
             text-align: center;
             padding: 40px 20px;
-            color: #00ccff;
-            border-top: 2px solid #00ffff;
-            margin-top: 40px;
-            background: rgba(0, 100, 255, 0.1);
-            border-radius: 15px;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+            font-size: 0.9em;
         }
         
         .footer a {
-            color: #00ffff;
+            color: var(--wispr-teal);
             text-decoration: none;
         }
         
@@ -305,39 +398,7 @@
             text-decoration: underline;
         }
         
-        .toc {
-            background: rgba(0, 100, 255, 0.1);
-            border: 1px solid #00ffff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .toc h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #00ffff;
-            margin-bottom: 15px;
-        }
-        
-        .toc ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-        
-        .toc li {
-            margin-bottom: 8px;
-        }
-        
-        .toc a {
-            color: #00ccff;
-            text-decoration: none;
-        }
-        
-        .toc a:hover {
-            color: #00ffff;
-            text-decoration: underline;
-        }
-        
+        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -354,1063 +415,1091 @@
             table {
                 font-size: 0.85em;
             }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 粒子背景 -->
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
         <header>
-            <h1>🎤 Wispr Flow 2026 年市场调研报告</h1>
-            <p class="subtitle">语音输入工具市场分析 | 数据可信度：85-90% | 2026 年 4 月 7 日 | 分析师：小虾儿 🦐</p>
+            <h1>Wispr Flow 2026</h1>
+            <p class="subtitle">Market Research Report | Data Confidence: <strong>85-90%</strong> | April 7, 2026</p>
         </header>
 
-        <!-- 目录 -->
-        <div class="toc">
-            <h3>📑 目录</h3>
-            <ul>
-                <li><a href="#executive-summary">📊 执行摘要</a></li>
-                <li><a href="#key-metrics">💰 核心指标</a></li>
-                <li><a href="#market-analysis">📈 市场层面分析</a></li>
-                <li><a href="#technical-analysis">🔬 技术层面分析</a></li>
-                <li><a href="#product-analysis">🎯 产品层面分析</a></li>
-                <li><a href="#recommendations">💡 战略建议</a></li>
-                <li><a href="#data-sources">📁 数据来源</a></li>
-            </ul>
-        </div>
-
         <!-- 核心指标 -->
-        <div class="metrics-grid" id="key-metrics">
+        <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-value">$81M</div>
-                <div class="metric-label">累计融资</div>
-                <div class="metric-delta">📈 行业领先</div>
+                <div class="metric-label">Total Funding</div>
+                <div class="metric-delta">📈 Industry Leading</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">20%</div>
-                <div class="metric-label">付费转化率</div>
-                <div class="metric-delta">📈 行业 5 倍</div>
+                <div class="metric-label">Conversion Rate</div>
+                <div class="metric-delta">📈 5x Industry Avg</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">70%</div>
-                <div class="metric-label">12 个月留存</div>
-                <div class="metric-delta">📈 行业 75%</div>
+                <div class="metric-label">12-Month Retention</div>
+                <div class="metric-delta">📈 75% vs Industry</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">100x</div>
-                <div class="metric-label">用户年增长</div>
-                <div class="metric-delta">📈 行业 10 倍</div>
+                <div class="metric-label">YoY User Growth</div>
+                <div class="metric-delta">📈 10x Industry Avg</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">270+</div>
-                <div class="metric-label">财富 500 强客户</div>
-                <div class="metric-delta">📈 市场领先</div>
+                <div class="metric-label">Fortune 500 Clients</div>
+                <div class="metric-delta">📈 Market Leading</div>
             </div>
             <div class="metric-card">
                 <div class="metric-value">12.77%</div>
-                <div class="metric-label">CER 错误率</div>
-                <div class="metric-delta">📊 行业中等</div>
+                <div class="metric-label">CER Error Rate</div>
+                <div class="metric-delta">📊 Industry Average</div>
             </div>
         </div>
 
         <!-- 图表区域 -->
         <div class="charts-grid">
             <div class="chart-card">
-                <h2 class="chart-title">📊 核心指标对比</h2>
+                <h2 class="chart-title">Key Metrics Comparison</h2>
                 <canvas id="metricsChart"></canvas>
             </div>
             <div class="chart-card">
-                <h2 class="chart-title">🏆 市场份额分布</h2>
+                <h2 class="chart-title">Market Share Distribution</h2>
                 <canvas id="marketShareChart"></canvas>
             </div>
         </div>
 
         <div class="charts-grid">
             <div class="chart-card">
-                <h2 class="chart-title">📈 技术指标雷达图</h2>
+                <h2 class="chart-title">Technical Metrics Radar</h2>
                 <canvas id="techRadarChart"></canvas>
             </div>
             <div class="chart-card">
-                <h2 class="chart-title">🚀 用户增长趋势</h2>
+                <h2 class="chart-title">User Growth Trend</h2>
                 <canvas id="growthChart"></canvas>
             </div>
         </div>
 
         <!-- 执行摘要 -->
-        <div class="section" id="executive-summary">
-            <h2 class="section-title">📊 执行摘要</h2>
+        <div class="section">
+            <h2 class="section-title">Executive Summary</h2>
             <div class="section-content">
-                <h3>核心发现</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>维度</th>
-                            <th>关键发现</th>
-                            <th>影响等级</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>市场</strong></td>
-                            <td>语音输入赛道融资活跃，2025 年 Wispr Flow 获 8100 万美元</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>技术</strong></td>
-                            <td>意图驱动转录 vs 传统语音识别，CER 从 10% 降至 5% 以下</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>产品</strong></td>
-                            <td>从 MVP（语音转文字）到 Voice OS（系统级输入平台）</td>
-                            <td><span class="badge badge-medium">🟡 中</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>竞争</strong></td>
-                            <td>谷歌免费入局（Google AI Edge Eloquent），可能颠覆定价模式</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>机会</strong></td>
-                            <td>中文优化、离线隐私、企业合规是三大差异化方向</td>
-                            <td><span class="badge badge-high">🟢 高</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>Key Findings</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Key Finding</th>
+                                <th>Impact Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Market</strong></td>
+                                <td>Voice input sector highly active, Wispr Flow raised $81M in 2025</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technology</strong></td>
+                                <td>Intent-driven transcription vs traditional speech recognition, CER reduced from 10% to below 5%</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Product</strong></td>
+                                <td>From MVP (voice-to-text) to Voice OS (system-level input platform)</td>
+                                <td><span class="badge badge-medium">🟡 Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Competition</strong></td>
+                                <td>Google free entry (Google AI Edge Eloquent), may disrupt pricing</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Opportunities</strong></td>
+                                <td>Chinese optimization, offline privacy, enterprise compliance are three key differentiation directions</td>
+                                <td><span class="badge badge-high">🟢 High</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>关键数据对比</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>指标</th>
-                            <th>Wispr Flow</th>
-                            <th>行业平均</th>
-                            <th>差距</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>付费转化率</td>
-                            <td><strong>20%</strong></td>
-                            <td>~4%</td>
-                            <td><span class="badge badge-high">5 倍</span></td>
-                        </tr>
-                        <tr>
-                            <td>12 个月留存</td>
-                            <td><strong>70%</strong></td>
-                            <td>~40%</td>
-                            <td><span class="badge badge-high">75%</span></td>
-                        </tr>
-                        <tr>
-                            <td>用户增长率</td>
-                            <td><strong>100 倍/年</strong></td>
-                            <td>~10 倍/年</td>
-                            <td><span class="badge badge-high">10 倍</span></td>
-                        </tr>
-                        <tr>
-                            <td>CER（错误率）</td>
-                            <td><strong>12.77%</strong></td>
-                            <td>7-15%</td>
-                            <td><span class="badge badge-medium">中等</span></td>
-                        </tr>
-                        <tr>
-                            <td>企业客户</td>
-                            <td><strong>270 家财富 500 强</strong></td>
-                            <td>-</td>
-                            <td><span class="badge badge-high">领先</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>Key Data Comparison</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Wispr Flow</th>
+                                <th>Industry Average</th>
+                                <th>Gap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Conversion Rate</td>
+                                <td><strong>20%</strong></td>
+                                <td>~4%</td>
+                                <td><span class="badge badge-high">5x</span></td>
+                            </tr>
+                            <tr>
+                                <td>12-Month Retention</td>
+                                <td><strong>70%</strong></td>
+                                <td>~40%</td>
+                                <td><span class="badge badge-high">75%</span></td>
+                            </tr>
+                            <tr>
+                                <td>User Growth Rate</td>
+                                <td><strong>100x/year</strong></td>
+                                <td>~10x/year</td>
+                                <td><span class="badge badge-high">10x</span></td>
+                            </tr>
+                            <tr>
+                                <td>CER (Error Rate)</td>
+                                <td><strong>12.77%</strong></td>
+                                <td>7-15%</td>
+                                <td><span class="badge badge-medium">Average</span></td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise Clients</td>
+                                <td><strong>270+ Fortune 500</strong></td>
+                                <td>-</td>
+                                <td><span class="badge badge-high">Leading</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- 市场层面分析 -->
-        <div class="section" id="market-analysis">
-            <h2 class="section-title">📈 市场层面分析</h2>
+        <div class="section">
+            <h2 class="section-title">Market Analysis</h2>
             <div class="section-content">
-                <h3>1.1 市场竞争格局</h3>
-                <p>语音输入工具市场竞争激烈，主要玩家包括传统科技巨头和新兴创业公司。Wispr Flow 凭借跨平台优势和企业合规认证，在企业市场占据领先地位。</p>
+                <h3>1.1 Competitive Landscape</h3>
+                <p>The voice input tool market is highly competitive, with major players including traditional tech giants and emerging startups. Wispr Flow leads in the enterprise market with cross-platform advantages and enterprise compliance certifications.</p>
                 
-                <h4>竞争矩阵（7 大主要玩家）</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>产品</th>
-                            <th>融资额</th>
-                            <th>平台覆盖</th>
-                            <th>离线</th>
-                            <th>价格</th>
-                            <th>CER</th>
-                            <th>核心优势</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Wispr Flow</strong></td>
-                            <td>$81M</td>
-                            <td>Mac/Win/iOS/Android</td>
-                            <td><span class="badge badge-low">❌</span></td>
-                            <td>$15/月</td>
-                            <td>12.77%</td>
-                            <td><span class="badge badge-high">跨平台、企业合规</span></td>
-                        </tr>
-                        <tr>
-                            <td>Google Eloquent</td>
-                            <td>谷歌旗下</td>
-                            <td>iOS (Android 计划中)</td>
-                            <td><span class="badge badge-high">✅</span></td>
-                            <td><span class="badge badge-high">免费</span></td>
-                            <td>-</td>
-                            <td><span class="badge badge-high">免费、离线、Gemma</span></td>
-                        </tr>
-                        <tr>
-                            <td>Willow</td>
-                            <td>$4.2M (YC)</td>
-                            <td>Mac/Win/iOS</td>
-                            <td><span class="badge badge-high">✅</span></td>
-                            <td>~$15/月</td>
-                            <td>-</td>
-                            <td><span class="badge badge-high">本地存储、隐私优先</span></td>
-                        </tr>
-                        <tr>
-                            <td>蛐蛐 (QuQu)</td>
-                            <td>开源</td>
-                            <td>Win/Mac/Linux</td>
-                            <td><span class="badge badge-high">✅</span></td>
-                            <td><span class="badge badge-high">免费</span></td>
-                            <td>-</td>
-                            <td><span class="badge badge-high">开源免费、中文优化</span></td>
-                        </tr>
-                        <tr>
-                            <td>Typeless</td>
-                            <td>-</td>
-                            <td>Mac</td>
-                            <td><span class="badge badge-high">✅</span></td>
-                            <td>按年付费</td>
-                            <td><span class="badge badge-high">7.00%</span></td>
-                            <td><span class="badge badge-high">行业顶尖准确率</span></td>
-                        </tr>
-                        <tr>
-                            <td>SuperWhisper</td>
-                            <td>-</td>
-                            <td>Mac</td>
-                            <td><span class="badge badge-high">✅</span></td>
-                            <td>按年付费</td>
-                            <td>-</td>
-                            <td>本地运行、隐私保护</td>
-                        </tr>
-                        <tr>
-                            <td>SaySo（国产）</td>
-                            <td>-</td>
-                            <td>全平台</td>
-                            <td><span class="badge badge-medium">⚠️</span></td>
-                            <td>$3-5/月</td>
-                            <td>-</td>
-                            <td>价格优势（vs Wispr $12）</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h4>Competition Matrix (7 Major Players)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Funding</th>
+                                <th>Platforms</th>
+                                <th>Offline</th>
+                                <th>Pricing</th>
+                                <th>CER</th>
+                                <th>Core Advantage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Wispr Flow</strong></td>
+                                <td>$81M</td>
+                                <td>Mac/Win/iOS/Android</td>
+                                <td><span class="badge badge-low">❌</span></td>
+                                <td>$15/mo</td>
+                                <td>12.77%</td>
+                                <td><span class="badge badge-high">Cross-platform, Enterprise Compliance</span></td>
+                            </tr>
+                            <tr>
+                                <td>Google Eloquent</td>
+                                <td>Google-backed</td>
+                                <td>iOS (Android planned)</td>
+                                <td><span class="badge badge-high">✅</span></td>
+                                <td><span class="badge badge-high">Free</span></td>
+                                <td>-</td>
+                                <td><span class="badge badge-high">Free, Offline, Gemma</span></td>
+                            </tr>
+                            <tr>
+                                <td>Willow</td>
+                                <td>$4.2M (YC)</td>
+                                <td>Mac/Win/iOS</td>
+                                <td><span class="badge badge-high">✅</span></td>
+                                <td>~$15/mo</td>
+                                <td>-</td>
+                                <td><span class="badge badge-high">Local Storage, Privacy First</span></td>
+                            </tr>
+                            <tr>
+                                <td>QuQu</td>
+                                <td>Open Source</td>
+                                <td>Win/Mac/Linux</td>
+                                <td><span class="badge badge-high">✅</span></td>
+                                <td><span class="badge badge-high">Free</span></td>
+                                <td>-</td>
+                                <td><span class="badge badge-high">Open Source, Chinese Optimized</span></td>
+                            </tr>
+                            <tr>
+                                <td>Typeless</td>
+                                <td>-</td>
+                                <td>Mac</td>
+                                <td><span class="badge badge-high">✅</span></td>
+                                <td>Annual</td>
+                                <td><span class="badge badge-high">7.00%</span></td>
+                                <td><span class="badge badge-high">Industry-leading Accuracy</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>1.2 未来竞争态势三大趋势</h3>
+                <h3>1.2 Three Key Market Trends</h3>
                 
-                <h4>趋势 1: 免费 vs 付费（谷歌入局）</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>维度</th>
-                            <th>现状</th>
-                            <th>2026 预测</th>
-                            <th>影响</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>定价模式</td>
-                            <td>$12-15/月主流</td>
-                            <td>免费版 + 付费版分层</td>
-                            <td>中小厂商面临压力</td>
-                        </tr>
-                        <tr>
-                            <td>谷歌优势</td>
-                            <td>-</td>
-                            <td>免费 + 离线 + Gemma 模型 + 安卓预装</td>
-                            <td>可能颠覆定价</td>
-                        </tr>
-                        <tr>
-                            <td>Wispr 应对</td>
-                            <td>企业合规优势</td>
-                            <td>强化企业版，避免价格战</td>
-                            <td>聚焦 270 家财富 500 强</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>关键数据：</strong></p>
+                <h4>Trend 1: Free vs Paid (Google Entry)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Current</th>
+                                <th>2026 Forecast</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pricing Model</td>
+                                <td>$12-15/mo mainstream</td>
+                                <td>Free tier + Paid tier</td>
+                                <td>Pressure on SMB vendors</td>
+                            </tr>
+                            <tr>
+                                <td>Google Advantage</td>
+                                <td>-</td>
+                                <td>Free + Offline + Gemma + Android preload</td>
+                                <td>May disrupt pricing</td>
+                            </tr>
+                            <tr>
+                                <td>Wispr Response</td>
+                                <td>Enterprise compliance</td>
+                                <td>Strengthen enterprise tier, avoid price war</td>
+                                <td>Focus on 270+ Fortune 500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Key Data:</strong></p>
                 <ul>
-                    <li>Google AI Edge Eloquent 2026 年 4 月 7 日发布</li>
-                    <li>完全免费、离线使用、基于 Gemma 模型</li>
-                    <li>目前仅 iOS，Android 版本计划中</li>
+                    <li>Google AI Edge Eloquent launched April 7, 2026</li>
+                    <li>Completely free, offline use, based on Gemma model</li>
+                    <li>iOS only currently, Android version planned</li>
                 </ul>
 
-                <h4>趋势 2: 离线 vs 云端（隐私担忧）</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>维度</th>
-                            <th>云端派</th>
-                            <th>离线派</th>
-                            <th>用户偏好</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>代表产品</td>
-                            <td>Wispr Flow</td>
-                            <td>Willow、Google、蛐蛐</td>
-                            <td>向离线倾斜</td>
-                        </tr>
-                        <tr>
-                            <td>优势</td>
-                            <td>模型更新快、功能强大</td>
-                            <td>隐私保护、无需联网</td>
-                            <td>隐私敏感度提升</td>
-                        </tr>
-                        <tr>
-                            <td>劣势</td>
-                            <td>隐私担忧、需联网</td>
-                            <td>模型更新慢、功能受限</td>
-                            <td>企业用户更关注</td>
-                        </tr>
-                        <tr>
-                            <td>趋势</td>
-                            <td><span class="badge badge-low">用户流失风险</span></td>
-                            <td><span class="badge badge-high">需求增长</span></td>
-                            <td>2026 年离线成标配</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>关键数据：</strong></p>
+                <h4>Trend 2: Offline vs Cloud (Privacy Concerns)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Cloud</th>
+                                <th>Offline</th>
+                                <th>User Preference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Representative Products</td>
+                                <td>Wispr Flow</td>
+                                <td>Willow, Google, QuQu</td>
+                                <td>Shifting to offline</td>
+                            </tr>
+                            <tr>
+                                <td>Advantages</td>
+                                <td>Fast model updates, powerful features</td>
+                                <td>Privacy protection, no internet required</td>
+                                <td>Privacy sensitivity increasing</td>
+                            </tr>
+                            <tr>
+                                <td>Disadvantages</td>
+                                <td>Privacy concerns, requires internet</td>
+                                <td>Slower model updates, limited features</td>
+                                <td>Enterprise users more concerned</td>
+                            </tr>
+                            <tr>
+                                <td>Trend</td>
+                                <td><span class="badge badge-low">User churn risk</span></td>
+                                <td><span class="badge badge-high">Growing demand</span></td>
+                                <td>Offline becomes standard in 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Key Data:</strong></p>
                 <ul>
-                    <li>70% 企业用户表示隐私是首要考虑因素</li>
-                    <li>Willow 凭借本地存储获 420 万美元 YC 融资</li>
-                    <li>蛐蛐 (QuQu) 开源免费，本地 FunASR，中文用户首选</li>
+                    <li>70% of enterprise users cite privacy as top concern</li>
+                    <li>Willow raised $4.2M Seed round from YC with local storage</li>
+                    <li>QuQu open source, local FunASR, preferred by Chinese users</li>
                 </ul>
 
-                <h4>趋势 3: 通用 vs 专业（自定义需求）</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>维度</th>
-                            <th>通用派</th>
-                            <th>专业派</th>
-                            <th>市场趋势</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>代表产品</td>
-                            <td>Google Eloquent</td>
-                            <td>Wispr Flow、Typeless</td>
-                            <td>向专业化倾斜</td>
-                        </tr>
-                        <tr>
-                            <td>功能</td>
-                            <td>基础语音转文字</td>
-                            <td>自定义词汇库、风格匹配</td>
-                            <td>专业需求增长</td>
-                        </tr>
-                        <tr>
-                            <td>用户</td>
-                            <td>大众用户</td>
-                            <td>法律、医疗、技术文档</td>
-                            <td>垂直行业付费意愿高</td>
-                        </tr>
-                        <tr>
-                            <td>趋势</td>
-                            <td><span class="badge badge-medium">流量大但付费低</span></td>
-                            <td><span class="badge badge-high">付费转化高</span></td>
-                            <td>企业市场是主战场</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>关键数据：</strong></p>
+                <h4>Trend 3: General vs Professional (Customization Demand)</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>General</th>
+                                <th>Professional</th>
+                                <th>Market Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Representative Products</td>
+                                <td>Google Eloquent</td>
+                                <td>Wispr Flow, Typeless</td>
+                                <td>Shifting to professional</td>
+                            </tr>
+                            <tr>
+                                <td>Features</td>
+                                <td>Basic voice-to-text</td>
+                                <td>Custom vocabulary, style matching</td>
+                                <td>Professional demand growing</td>
+                            </tr>
+                            <tr>
+                                <td>Users</td>
+                                <td>Mass market</td>
+                                <td>Legal, Medical, Technical docs</td>
+                                <td>High willingness to pay in verticals</td>
+                            </tr>
+                            <tr>
+                                <td>Trend</td>
+                                <td><span class="badge badge-medium">High traffic, low conversion</span></td>
+                                <td><span class="badge badge-high">High conversion</span></td>
+                                <td>Enterprise market is key battleground</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Key Data:</strong></p>
                 <ul>
-                    <li>Wispr Flow 法律从业者满意度 90.1%</li>
-                    <li>技术文档场景满意度 89.3%</li>
-                    <li>自定义词汇库是最受好评功能</li>
+                    <li>Wispr Flow legal practitioner satisfaction: 90.1%</td>
+                    <li>Technical documentation scenario satisfaction: 89.3%</td>
+                    <li>Custom vocabulary is most praised feature</li>
                 </ul>
 
-                <h3>1.3 市场竞争强度评估（波特五力）</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>力量</th>
-                            <th>强度</th>
-                            <th>解读</th>
-                            <th>Wispr 应对策略</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>供应商议价能力</td>
-                            <td><span class="badge badge-medium">🟡 中</span></td>
-                            <td>依赖开源模型（Whisper、FunASR），但可自研</td>
-                            <td>自研 ASR，目标错误率<5%</td>
-                        </tr>
-                        <tr>
-                            <td>买方议价能力</td>
-                            <td><span class="badge badge-low">🔴 高</span></td>
-                            <td>免费/低价替代方案多，转换成本低</td>
-                            <td>强化企业合规优势</td>
-                        </tr>
-                        <tr>
-                            <td>竞争 rivalry</td>
-                            <td><span class="badge badge-low">🔴 高</span></td>
-                            <td>谷歌入局、开源崛起、价格战风险</td>
-                            <td>聚焦企业市场，避免价格战</td>
-                        </tr>
-                        <tr>
-                            <td>替代品威胁</td>
-                            <td><span class="badge badge-medium">🟡 中</span></td>
-                            <td>键盘输入仍是主流，但语音渗透率提升</td>
-                            <td>提升速度优势（4 倍于打字）</td>
-                        </tr>
-                        <tr>
-                            <td>新进入者威胁</td>
-                            <td><span class="badge badge-low">🔴 高</span></td>
-                            <td>开源模型降低技术门槛</td>
-                            <td>品牌 + 合规 + 数据护城河</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>综合竞争强度</strong>: <span class="badge badge-low">🔴 高</span>（5 分制：4.2 分）</p>
+                <h3>1.3 Porter's Five Forces Analysis</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Force</th>
+                                <th>Intensity</th>
+                                <th>Analysis</th>
+                                <th>Wispr Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Supplier Power</td>
+                                <td><span class="badge badge-medium">🟡 Medium</span></td>
+                                <td>Dependent on open source models (Whisper, FunASR), but can self-develop</td>
+                                <td>Self-develop ASR, target &lt;5% error rate</td>
+                            </tr>
+                            <tr>
+                                <td>Buyer Power</td>
+                                <td><span class="badge badge-low">🔴 High</span></td>
+                                <td>Many free/low-cost alternatives, low switching costs</td>
+                                <td>Strengthen enterprise compliance advantage</td>
+                            </tr>
+                            <tr>
+                                <td>Competitive Rivalry</td>
+                                <td><span class="badge badge-low">🔴 High</span></td>
+                                <td>Google entry, open source rise, price war risk</td>
+                                <td>Focus on enterprise market, avoid price war</td>
+                            </tr>
+                            <tr>
+                                <td>Threat of Substitutes</td>
+                                <td><span class="badge badge-medium">🟡 Medium</span></td>
+                                <td>Keyboard input still mainstream, but voice penetration increasing</td>
+                                <td>Improve speed advantage (4x typing speed)</td>
+                            </tr>
+                            <tr>
+                                <td>Threat of New Entrants</td>
+                                <td><span class="badge badge-low">🔴 High</span></td>
+                                <td>Open source models lower technical barriers</td>
+                                <td>Brand + Compliance + Data moat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Overall Competitive Intensity</strong>: <span class="badge badge-low">🔴 High</span> (4.2/5.0)</p>
 
-                <h3>1.4 SWOT 分析</h3>
-                <h4>优势 (Strengths)</h4>
+                <h3>1.4 SWOT Analysis</h3>
+                <h4>Strengths</h4>
                 <ul>
-                    <li>✅ 跨平台覆盖（Mac/Win/iOS/Android）</li>
-                    <li>✅ 企业合规认证（SOC 2、HIPAA）</li>
-                    <li>✅ 高留存率（70% 年留存）</li>
-                    <li>✅ 270 家财富 500 强背书</li>
-                    <li>✅ 意图驱动转录（差异化）</li>
+                    <li>✅ Cross-platform coverage (Mac/Win/iOS/Android)</li>
+                    <li>✅ Enterprise compliance certifications (SOC 2, HIPAA)</li>
+                    <li>✅ High retention rate (70% annual retention)</li>
+                    <li>✅ 270+ Fortune 500 endorsements</li>
+                    <li>✅ Intent-driven transcription (differentiation)</li>
                 </ul>
 
-                <h4>劣势 (Weaknesses)</h4>
+                <h4>Weaknesses</h4>
                 <ul>
-                    <li>❌ CER 12.77% 低于 Typeless (7%)</li>
-                    <li>❌ 中文优化不足</li>
-                    <li>❌ 需联网（vs 竞品离线）</li>
-                    <li>❌ 价格敏感用户可能流失</li>
-                    <li>❌ 学习成本略高</li>
+                    <li>❌ CER 12.77% lower than Typeless (7%)</li>
+                    <li>❌ Insufficient Chinese optimization</li>
+                    <li>❌ Requires internet (vs competitors offline)</li>
+                    <li>❌ Price-sensitive users may churn</li>
+                    <li>❌ Slightly higher learning curve</li>
                 </ul>
 
-                <h4>机会 (Opportunities)</h4>
+                <h4>Opportunities</h4>
                 <ul>
-                    <li>🟢 中文市场（蛐蛐证明需求）</li>
-                    <li>🟢 开源模型整合（FunASR）</li>
-                    <li>🟢 企业定制（垂直行业）</li>
-                    <li>🟢 硬件合作（AR 眼镜等）</li>
-                    <li>🟢 Voice OS 愿景</li>
+                    <li>🟢 Chinese market (QuQu proves demand)</li>
+                    <li>🟢 Open source model integration (FunASR)</li>
+                    <li>🟢 Enterprise customization (vertical industries)</li>
+                    <li>🟢 Hardware partnerships (AR glasses, etc.)</li>
+                    <li>🟢 Voice OS vision</li>
                 </ul>
 
-                <h4>威胁 (Threats)</h4>
+                <h4>Threats</h4>
                 <ul>
-                    <li>🔴 谷歌免费入局</li>
-                    <li>🔴 开源替代方案（QuQu、Voquill）</li>
-                    <li>🔴 价格战压缩利润</li>
-                    <li>🔴 隐私担忧（云端处理）</li>
-                    <li>🔴 技术门槛降低（新进入者）</li>
+                    <li>🔴 Google free entry</li>
+                    <li>🔴 Open source alternatives (QuQu, Voquill)</li>
+                    <li>🔴 Price war compressing margins</li>
+                    <li>🔴 Privacy concerns (cloud processing)</li>
+                    <li>🔴 Lowered technical barriers (new entrants)</li>
                 </ul>
             </div>
         </div>
 
         <!-- 技术层面分析 -->
-        <div class="section" id="technical-analysis">
-            <h2 class="section-title">🔬 技术层面分析</h2>
+        <div class="section">
+            <h2 class="section-title">Technical Analysis</h2>
             <div class="section-content">
-                <h3>2.1 技术架构对比</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>产品</th>
-                            <th>ASR 模型</th>
-                            <th>LLM 后处理</th>
-                            <th>离线</th>
-                            <th>语言支持</th>
-                            <th>延迟</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Wispr Flow</strong></td>
-                            <td>自研 + Whisper</td>
-                            <td>✅ Llama</td>
-                            <td>❌</td>
-                            <td>100+</td>
-                            <td>&lt;200ms</td>
-                        </tr>
-                        <tr>
-                            <td>Willow</td>
-                            <td>自研</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>多语言</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Google Eloquent</td>
-                            <td><strong>Gemma</strong></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>多语言</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>蛐蛐 (QuQu)</td>
-                            <td><strong>FunASR Paraformer</strong></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td><strong>中文优化</strong></td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Typeless</td>
-                            <td>自研</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>多语言</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>2.1 Technology Stack Comparison</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>ASR Model</th>
+                                <th>LLM Post-processing</th>
+                                <th>Offline</th>
+                                <th>Language Support</th>
+                                <th>Latency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Wispr Flow</strong></td>
+                                <td>Proprietary + Whisper</td>
+                                <td>✅ Llama</td>
+                                <td>❌</td>
+                                <td>100+</td>
+                                <td>&lt;200ms</td>
+                            </tr>
+                            <tr>
+                                <td>Willow</td>
+                                <td>Proprietary</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>Multi-language</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Google Eloquent</td>
+                                <td><strong>Gemma</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>Multi-language</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>QuQu</td>
+                                <td><strong>FunASR Paraformer</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td><strong>Chinese Optimized</strong></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Typeless</td>
+                                <td>Proprietary</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>Multi-language</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>2.2 技术指标对比</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>指标</th>
-                            <th>Wispr Flow</th>
-                            <th>Typeless</th>
-                            <th>智谱 AI</th>
-                            <th>行业平均</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>CER（字符错误率）</strong></td>
-                            <td>12.77%</td>
-                            <td><strong>7.00%</strong></td>
-                            <td>7.17%</td>
-                            <td>7-15%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>主观评分 (FMS)</strong></td>
-                            <td>2.32/3</td>
-                            <td>2.70/3</td>
-                            <td><strong>2.72/3</strong></td>
-                            <td>~2.5/3</td>
-                        </tr>
-                        <tr>
-                            <td><strong>中文识别</strong></td>
-                            <td>⚠️ 通用</td>
-                            <td>-</td>
-                            <td>✅ 优化</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td><strong>中英混合</strong></td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>✅</td>
-                            <td>⚠️</td>
-                        </tr>
-                        <tr>
-                            <td><strong>端到端延迟</strong></td>
-                            <td>&lt;200ms</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>200-500ms</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>2.2 Technical Metrics Comparison</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Wispr Flow</th>
+                                <th>Typeless</th>
+                                <th>Zhipu AI</th>
+                                <th>Industry Average</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CER (Character Error Rate)</strong></td>
+                                <td>12.77%</td>
+                                <td><strong>7.00%</strong></td>
+                                <td>7.17%</td>
+                                <td>7-15%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subjective Score (FMS)</strong></td>
+                                <td>2.32/3</td>
+                                <td>2.70/3</td>
+                                <td><strong>2.72/3</strong></td>
+                                <td>~2.5/3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chinese Recognition</strong></td>
+                                <td>⚠️ General</td>
+                                <td>-</td>
+                                <td>✅ Optimized</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chinese-English Mixed</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>⚠️</td>
+                            </tr>
+                            <tr>
+                                <td><strong>End-to-End Latency</strong></td>
+                                <td>&lt;200ms</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>200-500ms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>2.3 从"语音识别"到"意图理解"</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>代际</th>
-                            <th>核心技术</th>
-                            <th>解决问题</th>
-                            <th>用户体验</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>第一代</strong> (2010-2020)</td>
-                            <td>传统 ASR（HMM+GMM）</td>
-                            <td>语音→文字转换</td>
-                            <td>准确率低、需手动修正</td>
-                        </tr>
-                        <tr>
-                            <td><strong>第二代</strong> (2020-2024)</td>
-                            <td>深度学习 ASR（Transformer）</td>
-                            <td>提升准确率</td>
-                            <td>准确率提升，但仍需编辑</td>
-                        </tr>
-                        <tr>
-                            <td><strong>第三代</strong> (2024-)</td>
-                            <td><strong>ASR + LLM 后处理</strong></td>
-                            <td><strong>理解意图→生成结构化文本</strong></td>
-                            <td><strong>自动修正、格式化、风格匹配</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>2.3 From "Speech Recognition" to "Intent Understanding"</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Generation</th>
+                                <th>Core Technology</th>
+                                <th>Problem Solved</th>
+                                <th>User Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1st Gen</strong> (2010-2020)</td>
+                                <td>Traditional ASR (HMM+GMM)</td>
+                                <td>Voice-to-text conversion</td>
+                                <td>Low accuracy, requires manual correction</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2nd Gen</strong> (2020-2024)</td>
+                                <td>Deep Learning ASR (Transformer)</td>
+                                <td>Improve accuracy</td>
+                                <td>Improved accuracy, still requires editing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3rd Gen</strong> (2024-)</td>
+                                <td><strong>ASR + LLM Post-processing</strong></td>
+                                <td><strong>Understand intent → Generate structured text</strong></td>
+                                <td><strong>Auto-correct, format, style matching</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>2.4 六大关键技术突破</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>技术</th>
-                            <th>解决的问题</th>
-                            <th>Wispr Flow 实现</th>
-                            <th>竞品实现</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>意图驱动转录</strong></td>
-                            <td>传统转录机械记录，不理解用户想要什么</td>
-                            <td>✅ 理解意图生成清晰文本</td>
-                            <td>Typeless、Willow</td>
-                        </tr>
-                        <tr>
-                            <td><strong>自动填充词移除</strong></td>
-                            <td>"嗯""呃""那个"等口语冗余</td>
-                            <td>✅ 自动过滤</td>
-                            <td>大部分竞品</td>
-                        </tr>
-                        <tr>
-                            <td><strong>实时语法修正</strong></td>
-                            <td>口误、语法错误需手动修正</td>
-                            <td>✅ 自动修正</td>
-                            <td>Typeless、Google</td>
-                        </tr>
-                        <tr>
-                            <td><strong>上下文感知</strong></td>
-                            <td>同音词、专业术语识别错误</td>
-                            <td>✅ 学习个人词典</td>
-                            <td>Willow、蛐蛐</td>
-                        </tr>
-                        <tr>
-                            <td><strong>风格匹配</strong></td>
-                            <td>不同场景需要不同语气</td>
-                            <td>✅ 正式/随意切换</td>
-                            <td>部分竞品</td>
-                        </tr>
-                        <tr>
-                            <td><strong>多语言混合</strong></td>
-                            <td>中英混杂识别困难</td>
-                            <td>✅ 支持</td>
-                            <td>智谱、蛐蛐（中文优化）</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>2.4 Six Key Technology Breakthroughs</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Technology</th>
+                                <th>Problem Solved</th>
+                                <th>Wispr Flow Implementation</th>
+                                <th>Competitor Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Intent-Driven Transcription</strong></td>
+                                <td>Traditional transcription is mechanical, doesn't understand user intent</td>
+                                <td>✅ Understand intent to generate clear text</td>
+                                <td>Typeless, Willow</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Auto Filler Word Removal</strong></td>
+                                <td>"Um", "uh", "like" etc. verbal redundancies</td>
+                                <td>✅ Auto-filter</td>
+                                <td>Most competitors</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Real-time Grammar Correction</strong></td>
+                                <td>Slips, grammar errors require manual correction</td>
+                                <td>✅ Auto-correct</td>
+                                <td>Typeless, Google</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Context Awareness</strong></td>
+                                <td>Homophones, technical term recognition errors</td>
+                                <td>✅ Learn personal dictionary</td>
+                                <td>Willow, QuQu</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Style Matching</strong></td>
+                                <td>Different scenarios require different tones</td>
+                                <td>✅ Formal/Casual switching</td>
+                                <td>Some competitors</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multi-language Mixing</strong></td>
+                                <td>Chinese-English mixed recognition difficulties</td>
+                                <td>✅ Supported</td>
+                                <td>Zhipu, QuQu (Chinese optimized)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- 产品层面分析 -->
-        <div class="section" id="product-analysis">
-            <h2 class="section-title">🎯 产品层面分析</h2>
+        <div class="section">
+            <h2 class="section-title">Product Analysis</h2>
             <div class="section-content">
-                <h3>3.1 产品发展四阶段</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>阶段</th>
-                            <th>时间</th>
-                            <th>特征</th>
-                            <th>核心目标</th>
-                            <th>成功标准</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>MVP</strong></td>
-                            <td>2024 Q4</td>
-                            <td>Mac 版发布，基础语音转文字</td>
-                            <td>验证 PMF</td>
-                            <td>日活>1000，留存>40%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>成长期</strong></td>
-                            <td>2025</td>
-                            <td>Windows/iOS/Android，企业功能</td>
-                            <td>用户增长</td>
-                            <td>月活>10 万，付费>15%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>成熟期</strong></td>
-                            <td>2026-2027</td>
-                            <td>Voice OS，多模态</td>
-                            <td>商业化变现</td>
-                            <td>月活>100 万，收入>$5000 万</td>
-                        </tr>
-                        <tr>
-                            <td><strong>平台期</strong></td>
-                            <td>2028+</td>
-                            <td>硬件合作，生态建设</td>
-                            <td>护城河构建</td>
-                            <td>估值>$10 亿，份额>20%</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>3.1 Product Evolution: Four Stages</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>Timeline</th>
+                                <th>Characteristics</th>
+                                <th>Core Objective</th>
+                                <th>Success Metrics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>MVP</strong></td>
+                                <td>2024 Q4</td>
+                                <td>Mac release, basic voice-to-text</td>
+                                <td>Validate PMF</td>
+                                <td>DAU&gt;1k, Retention&gt;40%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Growth</strong></td>
+                                <td>2025</td>
+                                <td>Windows/iOS/Android, enterprise features</td>
+                                <td>User growth</td>
+                                <td>MAU&gt;100k, Conversion&gt;15%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maturity</strong></td>
+                                <td>2026-2027</td>
+                                <td>Voice OS, multimodal</td>
+                                <td>Monetization</td>
+                                <td>MAU&gt;1M, Revenue&gt;$50M</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Platform</strong></td>
+                                <td>2028+</td>
+                                <td>Hardware partnerships, ecosystem</td>
+                                <td>Moat building</td>
+                                <td>Valuation&gt;$1B, Share&gt;20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>3.2 完整功能清单（四阶段）</h3>
+                <h3>3.2 Complete Feature Roadmap</h3>
                 
-                <h4>MVP 阶段（2024 Q4）- ✅ 已完成</h4>
+                <h4>MVP Stage (2024 Q4) - ✅ Completed</h4>
                 <ul>
-                    <li>✅ 基础语音转文字</li>
-                    <li>✅ 跨应用使用</li>
-                    <li>✅ 自动标点</li>
-                    <li>✅ 填充词移除</li>
-                    <li>✅ 英文支持</li>
-                    <li>✅ 快捷键唤醒</li>
+                    <li>✅ Basic voice-to-text</li>
+                    <li>✅ Cross-app usage</li>
+                    <li>✅ Auto-punctuation</li>
+                    <li>✅ Filler word removal</li>
+                    <li>✅ English support</li>
+                    <li>✅ Hotkey activation</li>
                 </ul>
-                <p><strong>MVP 验证结果：</strong></p>
+                <p><strong>MVP Validation Results:</strong></p>
                 <ul>
-                    <li>✅ 日活>1000（实际>5000）</li>
-                    <li>✅ 留存率>40%（实际 70%）</li>
-                    <li>✅ NPS>30（实际>50）</li>
+                    <li>✅ DAU&gt;1k (actual&gt;5k)</li>
+                    <li>✅ Retention&gt;40% (actual 70%)</li>
+                    <li>✅ NPS&gt;30 (actual&gt;50)</li>
                 </ul>
 
-                <h4>成长期（2025）- ✅ 已完成</h4>
+                <h4>Growth Stage (2025) - ✅ Completed</h4>
                 <ul>
-                    <li>✅ Windows 版</li>
-                    <li>✅ iOS 版</li>
-                    <li>✅ 多语言支持</li>
-                    <li>✅ 个人词典</li>
+                    <li>✅ Windows version</li>
+                    <li>✅ iOS version</li>
+                    <li>✅ Multi-language support</li>
+                    <li>✅ Personal dictionary</li>
                     <li>✅ Snippets</li>
-                    <li>✅ 风格匹配</li>
-                    <li>✅ 企业合规</li>
-                    <li>⏳ 团队协作（开发中）</li>
+                    <li>✅ Style matching</li>
+                    <li>✅ Enterprise compliance</li>
+                    <li>⏳ Team collaboration (in development)</li>
                 </ul>
-                <p><strong>成长期验证结果：</strong></p>
+                <p><strong>Growth Stage Validation Results:</strong></p>
                 <ul>
-                    <li>✅ 月活>10 万（实际>50 万）</li>
-                    <li>✅ 付费转化>15%（实际 20%）</li>
-                    <li>✅ 企业客户>100 家（实际 270 家财富 500 强）</li>
-                </ul>
-
-                <h4>成熟期（2026-2027）- ⏳ 进行中</h4>
-                <ul>
-                    <li>✅ Android 版</li>
-                    <li>⏳ 离线模式（2026 Q3）</li>
-                    <li>❌ 中文优化（2026 Q2）</li>
-                    <li>✅ Command 模式</li>
-                    <li>⏳ 会议记录（2026 Q4）</li>
-                    <li>❌ 实时翻译（2027 Q2）</li>
-                    <li>❌ API 开放（2027 Q1）</li>
-                    <li>⏳ 错误率<5%（2026 Q4）</li>
-                </ul>
-                <p><strong>成熟期目标：</strong></p>
-                <ul>
-                    <li>🔴 月活>100 万</li>
-                    <li>🔴 年收入>$5000 万</li>
-                    <li>🔴 财富 500 强>500 家</li>
+                    <li>✅ MAU&gt;100k (actual&gt;500k)</li>
+                    <li>✅ Conversion&gt;15% (actual 20%)</li>
+                    <li>✅ Enterprise clients&gt;100 (actual 270+ Fortune 500)</li>
                 </ul>
 
-                <h4>平台期（2028+）- ❌ 规划中</h4>
+                <h4>Maturity Stage (2026-2027) - ⏳ In Progress</h4>
                 <ul>
-                    <li>❌ Voice OS（2028 Q1）</li>
-                    <li>❌ 多模态输入（2028 Q3）</li>
-                    <li>❌ AR 眼镜集成（2029 Q1）</li>
-                    <li>❌ 脑机接口（2030+）</li>
-                    <li>❌ 个性化 AI 助理（2028 Q4）</li>
-                    <li>❌ 硬件合作（2029 Q2）</li>
+                    <li>✅ Android version</li>
+                    <li>⏳ Offline mode (2026 Q3)</li>
+                    <li>❌ Chinese optimization (2026 Q2)</li>
+                    <li>✅ Command mode</li>
+                    <li>⏳ Meeting notes (2026 Q4)</li>
+                    <li>❌ Real-time translation (2027 Q2)</li>
+                    <li>❌ API access (2027 Q1)</li>
+                    <li>⏳ Error rate&lt;5% (2026 Q4)</li>
                 </ul>
-                <p><strong>平台期目标：</strong></p>
+                <p><strong>Maturity Stage Targets:</strong></p>
                 <ul>
-                    <li>🔴 估值>$10 亿</li>
-                    <li>🔴 市场份额>20%</li>
-                    <li>🔴 生态合作伙伴>100 家</li>
+                    <li>🔴 MAU&gt;1M</li>
+                    <li>🔴 Annual revenue&gt;$50M</li>
+                    <li>🔴 Fortune 500&gt;500</li>
+                </ul>
+
+                <h4>Platform Stage (2028+) - ❌ Planned</h4>
+                <ul>
+                    <li>❌ Voice OS (2028 Q1)</li>
+                    <li>❌ Multimodal input (2028 Q3)</li>
+                    <li>❌ AR glasses integration (2029 Q1)</li>
+                    <li>❌ Brain-computer interface (2030+)</li>
+                    <li>❌ Personalized AI assistant (2028 Q4)</li>
+                    <li>❌ Hardware partnerships (2029 Q2)</li>
+                </ul>
+                <p><strong>Platform Stage Targets:</strong></p>
+                <ul>
+                    <li>🔴 Valuation&gt;$1B</li>
+                    <li>🔴 Market share&gt;20%</li>
+                    <li>🔴 Ecosystem partners&gt;100</li>
                 </ul>
             </div>
         </div>
 
         <!-- 战略建议 -->
-        <div class="section" id="recommendations">
-            <h2 class="section-title">💡 战略建议</h2>
+        <div class="section">
+            <h2 class="section-title">Strategic Recommendations</h2>
             <div class="section-content">
-                <h3>4.1 核心结论</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>维度</th>
-                            <th>结论</th>
-                            <th>信心等级</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>市场</strong></td>
-                            <td>语音输入赛道竞争激烈，谷歌入局可能颠覆定价，但企业市场仍有空间</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>技术</strong></td>
-                            <td>意图驱动是差异化方向，但 CER 需降至 5% 以下才能保持领先</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>产品</strong></td>
-                            <td>从 MVP 到 Voice OS 路径清晰，中文优化和离线模式是当务之急</td>
-                            <td><span class="badge badge-high">🔴 高</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>4.1 Key Conclusions</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Conclusion</th>
+                                <th>Confidence Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Market</strong></td>
+                                <td>Voice input sector highly competitive, Google entry may disrupt pricing, but enterprise market仍有 space</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technology</strong></td>
+                                <td>Intent-driven is differentiation direction, but CER needs to drop below 5% to maintain lead</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Product</strong></td>
+                                <td>MVP to Voice OS path clear, Chinese optimization and offline mode are urgent priorities</td>
+                                <td><span class="badge badge-high">🔴 High</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                <h3>4.2 战略建议</h3>
+                <h3>4.2 Strategic Recommendations</h3>
                 <div class="recommendations-grid">
                     <div class="recommendation-card">
-                        <h3>🔴 短期（2026 年）</h3>
-                        <div class="priority priority-high">优先级：高</div>
+                        <h3>🔴 Short-term (2026)</h3>
+                        <div class="priority priority-high">Priority: High</div>
                         <ul>
-                            <li>整合 FunASR 推出中文版</li>
-                            <li>推出离线企业版</li>
-                            <li>错误率降至 5% 以下</li>
-                            <li>Android 平板优化</li>
+                            <li>Integrate FunASR for Chinese version</li>
+                            <li>Launch offline enterprise version</li>
+                            <li>Reduce error rate to below 5%</li>
+                            <li>Android tablet optimization</li>
                         </ul>
                     </div>
                     <div class="recommendation-card">
-                        <h3>🟡 中期（2027 年）</h3>
-                        <div class="priority priority-medium">优先级：中</div>
+                        <h3>🟡 Mid-term (2027)</h3>
+                        <div class="priority priority-medium">Priority: Medium</div>
                         <ul>
-                            <li>Voice OS 战略发布</li>
-                            <li>会议记录功能</li>
-                            <li>API 开放</li>
-                            <li>实时翻译</li>
+                            <li>Voice OS strategy launch</li>
+                            <li>Meeting notes feature</li>
+                            <li>API access</li>
+                            <li>Real-time translation</li>
                         </ul>
                     </div>
                     <div class="recommendation-card">
-                        <h3>🟢 长期（2028-2030）</h3>
-                        <div class="priority priority-low">优先级：低</div>
+                        <h3>🟢 Long-term (2028-2030)</h3>
+                        <div class="priority priority-low">Priority: Low</div>
                         <ul>
-                            <li>脑机接口研发</li>
-                            <li>AR 眼镜合作</li>
-                            <li>硬件自研</li>
+                            <li>Brain-computer interface R&D</li>
+                            <li>AR glasses partnership</li>
+                            <li>Hardware self-development</li>
                         </ul>
                     </div>
                 </div>
 
-                <h3>4.3 关键成功因素 (KSF)</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>因素</th>
-                            <th>权重</th>
-                            <th>现状</th>
-                            <th>目标</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>技术领先</strong></td>
-                            <td>30%</td>
-                            <td>中</td>
-                            <td>高（CER&lt;5%）</td>
-                        </tr>
-                        <tr>
-                            <td><strong>用户体验</strong></td>
-                            <td>25%</td>
-                            <td>高</td>
-                            <td>高（保持）</td>
-                        </tr>
-                        <tr>
-                            <td><strong>企业合规</strong></td>
-                            <td>20%</td>
-                            <td>高</td>
-                            <td>高（保持）</td>
-                        </tr>
-                        <tr>
-                            <td><strong>市场覆盖</strong></td>
-                            <td>15%</td>
-                            <td>高</td>
-                            <td>高（中文突破）</td>
-                        </tr>
-                        <tr>
-                            <td><strong>品牌认知</strong></td>
-                            <td>10%</td>
-                            <td>中</td>
-                            <td>高（硅谷→全球）</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>4.3 Key Success Factors (KSF)</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Factor</th>
+                                <th>Weight</th>
+                                <th>Current</th>
+                                <th>Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Technology Leadership</strong></td>
+                                <td>30%</td>
+                                <td>Medium</td>
+                                <td>High (CER&lt;5%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>User Experience</strong></td>
+                                <td>25%</td>
+                                <td>High</td>
+                                <td>High (Maintain)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Enterprise Compliance</strong></td>
+                                <td>20%</td>
+                                <td>High</td>
+                                <td>High (Maintain)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Market Coverage</strong></td>
+                                <td>15%</td>
+                                <td>High</td>
+                                <td>High (Chinese breakthrough)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brand Awareness</strong></td>
+                                <td>10%</td>
+                                <td>Medium</td>
+                                <td>High (Silicon Valley → Global)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- 数据来源 -->
-        <div class="section" id="data-sources">
-            <h2 class="section-title">📁 数据来源说明</h2>
+        <div class="section">
+            <h2 class="section-title">Data Sources</h2>
             <div class="section-content">
-                <h3>数据文件</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>独立数据集</th>
-                            <th>数据量</th>
-                            <th>核心内容</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>数据集 1</strong></td>
-                            <td>130 条</td>
-                            <td>技术指标、竞品对比、用户反馈</td>
-                        </tr>
-                        <tr>
-                            <td><strong>数据集 2</strong></td>
-                            <td>121 条</td>
-                            <td>融资数据、用户数据、竞品信息</td>
-                        </tr>
-                        <tr>
-                            <td><strong>总计</strong></td>
-                            <td><strong>251 条独立数据</strong></td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>注</strong>: 系统保存时产生重复，实际独立数据集为 2 个。</p>
+                <h3>Data Files</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Independent Dataset</th>
+                                <th>Data Volume</th>
+                                <th>Core Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dataset 1</strong></td>
+                                <td>130 entries</td>
+                                <td>Technical metrics, competitor comparison, user feedback</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dataset 2</strong></td>
+                                <td>121 entries</td>
+                                <td>Funding data, user data, competitor info</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td><strong>251 independent entries</strong></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Note:</strong> System save duplication occurred, actual independent datasets are 2.</p>
 
-                <h3>数据可信度评估</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>数据类型</th>
-                            <th>来源数量</th>
-                            <th>交叉验证</th>
-                            <th>可信度</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>融资数据</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-high">✅ 95%</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>用户数据</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-high">✅ 95%</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>技术指标</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-high">✅ 90%</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>竞品信息</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-medium">✅ 85%</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>时间线</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-high">✅ 95%</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>产品功能</strong></td>
-                            <td>2 源</td>
-                            <td>✅ 一致</td>
-                            <td><span class="badge badge-high">✅ 95%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p><strong>整体可信度</strong>: <span class="badge badge-high">✅ 85-90%</span>（2 源交叉验证）</p>
+                <h3>Data Confidence Assessment</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Type</th>
+                                <th>Source Count</th>
+                                <th>Cross-validation</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Funding Data</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-high">✅ 95%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>User Data</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-high">✅ 95%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technical Metrics</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-high">✅ 90%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Competitor Info</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-medium">✅ 85%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Timeline</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-high">✅ 95%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Product Features</strong></td>
+                                <td>2 sources</td>
+                                <td>✅ Consistent</td>
+                                <td><span class="badge badge-high">✅ 95%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Overall Confidence</strong>: <span class="badge badge-high">✅ 85-90%</span> (2-source cross-validation)</p>
 
-                <h3>主要媒体来源</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>媒体类型</th>
-                            <th>代表媒体</th>
-                            <th>文章数量</th>
-                            <th>可信度</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>科技媒体</strong></td>
-                            <td>36 氪、智源社区、动脉网</td>
-                            <td>20+</td>
-                            <td><span class="badge badge-high">✅ 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>门户网站</strong></td>
-                            <td>搜狐网、网易、新浪</td>
-                            <td>50+</td>
-                            <td><span class="badge badge-high">✅ 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>财经媒体</strong></td>
-                            <td>同花顺财经、雪球</td>
-                            <td>10+</td>
-                            <td><span class="badge badge-high">✅ 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>技术社区</strong></td>
-                            <td>知乎、CSDN、GitHub</td>
-                            <td>30+</td>
-                            <td><span class="badge badge-high">✅ 高</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>评测网站</strong></td>
-                            <td>什么值得买、AIGC 工具导航</td>
-                            <td>20+</td>
-                            <td><span class="badge badge-medium">✅ 中</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>官方渠道</strong></td>
-                            <td>Wispr Flow 官网、微软应用商店、App Store</td>
-                            <td>5+</td>
-                            <td><span class="badge badge-high">✅ 高</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>Primary Media Sources</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Media Type</th>
+                                <th>Representative Media</th>
+                                <th>Article Count</th>
+                                <th>Credibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tech Media</strong></td>
+                                <td>36Kr, Zhiyuan Community, Arterial Network</td>
+                                <td>20+</td>
+                                <td><span class="badge badge-high">✅ High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Portals</strong></td>
+                                <td>Sohu, NetEase, Sina</td>
+                                <td>50+</td>
+                                <td><span class="badge badge-high">✅ High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Financial Media</strong></td>
+                                <td>10jqka, Xueqiu</td>
+                                <td>10+</td>
+                                <td><span class="badge badge-high">✅ High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tech Communities</strong></td>
+                                <td>Zhihu, CSDN, GitHub</td>
+                                <td>30+</td>
+                                <td><span class="badge badge-high">✅ High</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Review Sites</strong></td>
+                                <td>SMZDM, AIGC Tool Navigator</td>
+                                <td>20+</td>
+                                <td><span class="badge badge-medium">✅ Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Official Channels</strong></td>
+                                <td>Wispr Flow Website, Microsoft Store, App Store</td>
+                                <td>5+</td>
+                                <td><span class="badge badge-high">✅ High</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>📊 数据来源：2 个独立 CSV 文件，251 条搜索结果 | 可信度：85-90%</p>
-            <p>📅 报告时间：2026 年 4 月 7 日 | 分析师：小虾儿 🦐</p>
-            <p>⚠️ 本报告仅供参考，不构成投资建议</p>
-            <p>🔗 飞书报告：<a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank">https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f</a></p>
+            <p>📊 Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%</p>
+            <p>📅 Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐</p>
+            <p>⚠️ This report is for reference only and does not constitute investment advice</p>
+            <p>🔗 Feishu Report: <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank">https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f</a></p>
         </div>
     </div>
 
     <script>
+        // 粒子背景
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                container.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
         // 全局图表配置
-        Chart.defaults.color = '#00ccff';
-        Chart.defaults.borderColor = 'rgba(0, 255, 255, 0.2)';
+        Chart.defaults.color = '#666666';
+        Chart.defaults.borderColor = '#E0E0E0';
+        Chart.defaults.font.family = "'Inter', sans-serif";
         
         // 核心指标对比
         new Chart(document.getElementById('metricsChart'), {
             type: 'bar',
             data: {
-                labels: ['付费转化率', '12 个月留存', '用户增长', 'CER 错误率'],
+                labels: ['Conversion', 'Retention', 'Growth', 'CER'],
                 datasets: [{
                     label: 'Wispr Flow',
                     data: [20, 70, 100, 12.77],
-                    backgroundColor: 'rgba(0, 255, 255, 0.8)',
-                    borderColor: '#00ffff',
+                    backgroundColor: 'rgba(0, 191, 165, 0.8)',
+                    borderColor: '#00BFA5',
                     borderWidth: 2
                 }, {
-                    label: '行业平均',
+                    label: 'Industry Avg',
                     data: [4, 40, 10, 10],
-                    backgroundColor: 'rgba(100, 100, 100, 0.5)',
-                    borderColor: '#666666',
+                    backgroundColor: 'rgba(150, 150, 150, 0.5)',
+                    borderColor: '#999999',
                     borderWidth: 2
                 }]
             },
@@ -1421,7 +1510,7 @@
                     y: {
                         beginAtZero: true,
                         grid: {
-                            color: 'rgba(0, 255, 255, 0.1)'
+                            color: 'rgba(0, 0, 0, 0.05)'
                         }
                     },
                     x: {
@@ -1434,7 +1523,7 @@
                     legend: {
                         labels: {
                             font: {
-                                family: 'Rajdhani'
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
@@ -1446,26 +1535,18 @@
         new Chart(document.getElementById('marketShareChart'), {
             type: 'doughnut',
             data: {
-                labels: ['Wispr Flow', 'Google', 'Willow', '蛐蛐', 'Typeless', '其他'],
+                labels: ['Wispr Flow', 'Google', 'Willow', 'QuQu', 'Typeless', 'Others'],
                 datasets: [{
                     data: [35, 25, 15, 10, 10, 5],
                     backgroundColor: [
-                        'rgba(0, 255, 255, 0.8)',
-                        'rgba(255, 68, 68, 0.8)',
-                        'rgba(0, 255, 136, 0.8)',
-                        'rgba(255, 255, 0, 0.8)',
-                        'rgba(255, 0, 255, 0.8)',
-                        'rgba(100, 100, 100, 0.5)'
+                        '#00BFA5',
+                        '#F44336',
+                        '#4CAF50',
+                        '#FFC107',
+                        '#9C27B0',
+                        '#9E9E9E'
                     ],
-                    borderColor: [
-                        '#00ffff',
-                        '#ff4444',
-                        '#00ff88',
-                        '#ffff00',
-                        '#ff00ff',
-                        '#666666'
-                    ],
-                    borderWidth: 2
+                    borderWidth: 0
                 }]
             },
             options: {
@@ -1476,7 +1557,7 @@
                         position: 'bottom',
                         labels: {
                             font: {
-                                family: 'Rajdhani'
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
@@ -1488,28 +1569,28 @@
         new Chart(document.getElementById('techRadarChart'), {
             type: 'radar',
             data: {
-                labels: ['CER 错误率', '主观评分', '延迟', '语言支持', '输入速度'],
+                labels: ['CER', 'FMS', 'Latency', 'Languages', 'Speed'],
                 datasets: [{
                     label: 'Wispr Flow',
                     data: [87, 77, 90, 95, 90],
-                    backgroundColor: 'rgba(0, 255, 255, 0.2)',
-                    borderColor: '#00ffff',
+                    backgroundColor: 'rgba(0, 191, 165, 0.2)',
+                    borderColor: '#00BFA5',
                     borderWidth: 2,
-                    pointBackgroundColor: '#00ffff'
+                    pointBackgroundColor: '#00BFA5'
                 }, {
                     label: 'Typeless',
                     data: [95, 90, 85, 80, 85],
-                    backgroundColor: 'rgba(255, 68, 68, 0.2)',
-                    borderColor: '#ff4444',
+                    backgroundColor: 'rgba(244, 67, 54, 0.2)',
+                    borderColor: '#F44336',
                     borderWidth: 2,
-                    pointBackgroundColor: '#ff4444'
+                    pointBackgroundColor: '#F44336'
                 }, {
-                    label: '智谱 AI',
+                    label: 'Zhipu AI',
                     data: [93, 91, 80, 85, 80],
-                    backgroundColor: 'rgba(0, 255, 136, 0.2)',
-                    borderColor: '#00ff88',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    borderColor: '#4CAF50',
                     borderWidth: 2,
-                    pointBackgroundColor: '#00ff88'
+                    pointBackgroundColor: '#4CAF50'
                 }]
             },
             options: {
@@ -1520,14 +1601,14 @@
                         beginAtZero: true,
                         max: 100,
                         grid: {
-                            color: 'rgba(0, 255, 255, 0.2)'
+                            color: 'rgba(0, 0, 0, 0.05)'
                         },
                         angleLines: {
-                            color: 'rgba(0, 255, 255, 0.2)'
+                            color: 'rgba(0, 0, 0, 0.05)'
                         },
                         pointLabels: {
                             font: {
-                                family: 'Rajdhani'
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
@@ -1536,7 +1617,7 @@
                     legend: {
                         labels: {
                             font: {
-                                family: 'Rajdhani'
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
@@ -1550,14 +1631,14 @@
             data: {
                 labels: ['2024 Q4', '2025 Q1', '2025 Q2', '2025 Q3', '2025 Q4', '2026 Q1'],
                 datasets: [{
-                    label: 'Wispr Flow 用户增长',
+                    label: 'Wispr Flow User Growth',
                     data: [1, 5, 20, 50, 80, 100],
-                    borderColor: '#00ffff',
-                    backgroundColor: 'rgba(0, 255, 255, 0.2)',
+                    borderColor: '#00BFA5',
+                    backgroundColor: 'rgba(0, 191, 165, 0.1)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#00ffff',
-                    pointBorderColor: '#000',
+                    pointBackgroundColor: '#00BFA5',
+                    pointBorderColor: '#FFFFFF',
                     pointBorderWidth: 2,
                     pointRadius: 5
                 }]
@@ -1569,7 +1650,7 @@
                     y: {
                         beginAtZero: true,
                         grid: {
-                            color: 'rgba(0, 255, 255, 0.1)'
+                            color: 'rgba(0, 0, 0, 0.05)'
                         }
                     },
                     x: {
@@ -1582,7 +1663,7 @@
                     legend: {
                         labels: {
                             font: {
-                                family: 'Rajdhani'
+                                family: "'Inter', sans-serif"
                             }
                         }
                     }
