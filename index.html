@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice-to-Text AI Market Research Report 2026</title>
+    <title>Voice-to-Text AI Market Analysis 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +19,8 @@
                             secondary: '#057a69',
                             light: '#e6f7f5',
                             success: '#10b981',
-                            purple: '#8b5cf6',
                             warning: '#f59e0b',
                             error: '#ef4444'
-                        },
-                        neutral: {
-                            white: '#ffffff',
-                            light: '#f9fafb',
-                            border: '#e5e7eb',
-                            textSecondary: '#6b7280',
-                            text: '#111827',
-                            black: '#000000'
                         }
                     },
                     fontFamily: {
@@ -48,7 +39,7 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #ffffff;
             color: #111827;
             line-height: 1.7;
@@ -63,25 +54,25 @@
         .report-header {
             background: linear-gradient(135deg, #034f46 0%, #055c52 100%);
             color: #ffffff;
-            padding: 80px 0 60px;
+            padding: 60px 0;
         }
         
         .report-title {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 800;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         
         .report-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             opacity: 0.9;
             max-width: 800px;
         }
         
         .report-meta {
             display: flex;
-            gap: 32px;
+            gap: 48px;
             margin-top: 32px;
             padding-top: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -107,95 +98,92 @@
         
         section {
             padding: 80px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: #034f46;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .section-title {
             font-size: 36px;
             font-weight: 700;
             color: #034f46;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
         
-        .section-subtitle {
-            font-size: 18px;
+        .section-question {
+            font-size: 20px;
             color: #6b7280;
             margin-bottom: 48px;
-            max-width: 800px;
-        }
-        
-        .executive-summary {
-            background: #f9fafb;
+            max-width: 900px;
+            padding-left: 24px;
             border-left: 4px solid #034f46;
-            padding: 40px;
-            margin-bottom: 60px;
-            border-radius: 0 12px 12px 0;
         }
         
-        .executive-summary h3 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #034f46;
-            margin-bottom: 16px;
-        }
-        
-        .executive-summary p {
-            color: #111827;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        
-        .key-findings {
+        .key-points {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
         
-        .finding-card {
-            background: #ffffff;
+        .point-card {
+            background: #f9fafb;
             border: 1px solid #e5e7eb;
             border-radius: 12px;
             padding: 32px;
             transition: all 0.3s ease;
         }
         
-        .finding-card:hover {
+        .point-card:hover {
             border-color: #034f46;
+            background: #ffffff;
             box-shadow: 0 10px 30px rgba(3, 79, 70, 0.08);
             transform: translateY(-2px);
         }
         
-        .finding-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 48px;
-            font-weight: 700;
-            color: #034f46;
-            margin-bottom: 16px;
+        .point-icon {
+            width: 48px;
+            height: 48px;
+            background: #e6f7f5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
         
-        .finding-title {
+        .point-title {
             font-size: 18px;
             font-weight: 600;
-            color: #111827;
+            color: #034f46;
             margin-bottom: 12px;
         }
         
-        .finding-description {
+        .point-description {
             font-size: 15px;
             color: #6b7280;
             line-height: 1.7;
-        }
-        
-        .data-section {
-            background: #f9fafb;
         }
         
         .chart-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 32px;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
         
         .chart-card {
@@ -205,29 +193,25 @@
             padding: 32px;
         }
         
-        .chart-card.full-width {
-            grid-column: span 2;
-        }
-        
         .chart-header {
             margin-bottom: 24px;
         }
         
         .chart-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: #034f46;
             margin-bottom: 8px;
         }
         
-        .chart-description {
+        .chart-subtitle {
             font-size: 14px;
             color: #6b7280;
         }
         
         .chart-container {
             position: relative;
-            height: 300px;
+            height: 320px;
         }
         
         .data-table {
@@ -249,7 +233,7 @@
             padding: 16px 20px;
             text-align: left;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -257,7 +241,7 @@
         .data-table td {
             padding: 16px 20px;
             border-bottom: 1px solid #e5e7eb;
-            font-size: 15px;
+            font-size: 14px;
             color: #111827;
         }
         
@@ -280,9 +264,9 @@
         
         .badge {
             display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
             font-weight: 500;
             font-family: 'JetBrains Mono', monospace;
         }
@@ -297,264 +281,240 @@
             color: #92400e;
         }
         
-        .badge-info {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        
-        .swot-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-        
-        .swot-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 32px;
-        }
-        
-        .swot-card.strengths {
-            border-top: 4px solid #10b981;
-        }
-        
-        .swot-card.weaknesses {
-            border-top: 4px solid #ef4444;
-        }
-        
-        .swot-card.opportunities {
-            border-top: 4px solid #3b82f6;
-        }
-        
-        .swot-card.threats {
-            border-top: 4px solid #f59e0b;
-        }
-        
-        .swot-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .swot-list {
-            list-style: none;
-        }
-        
-        .swot-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f9fafb;
-            color: #111827;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        .swot-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .recommendations {
-            margin-bottom: 60px;
-        }
-        
-        .recommendation-item {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
-        }
-        
-        .recommendation-item:hover {
-            border-color: #034f46;
-            box-shadow: 0 10px 30px rgba(3, 79, 70, 0.08);
-        }
-        
-        .recommendation-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        
-        .recommendation-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #034f46;
-        }
-        
-        .timeline-badge {
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .timeline-short {
+        .badge-error {
             background: #fee2e2;
             color: #dc2626;
         }
         
-        .timeline-mid {
-            background: #fef3c7;
-            color: #d97706;
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 60px;
         }
         
-        .timeline-long {
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #034f46, #e5e7eb);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -60px;
+            top: 0;
+            width: 42px;
+            height: 42px;
+            background: #034f46;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .timeline-content {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px;
+        }
+        
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .timeline-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #034f46;
+        }
+        
+        .timeline-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .feature-check {
+            width: 20px;
+            height: 20px;
             background: #d1fae5;
             color: #057a69;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+            font-weight: 600;
         }
         
-        .recommendation-actions {
-            list-style: none;
-            padding-left: 24px;
-        }
-        
-        .recommendation-actions li {
-            position: relative;
-            padding: 8px 0;
-            color: #6b7280;
+        .feature-text {
             font-size: 15px;
+            color: #111827;
+            line-height: 1.6;
         }
         
-        .recommendation-actions li::before {
-            content: '→';
-            position: absolute;
-            left: -24px;
-            color: #034f46;
-            font-weight: 600;
-        }
-        
-        .methodology {
+        .priority-section {
             background: #f9fafb;
-            padding: 40px;
-            border-radius: 12px;
-            margin-top: 60px;
-        }
-        
-        .methodology h3 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #034f46;
-            margin-bottom: 20px;
-        }
-        
-        .methodology-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            padding: 24px;
+            border-radius: 8px;
             margin-top: 24px;
         }
         
-        .methodology-item {
+        .priority-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #034f46;
+            margin-bottom: 16px;
+        }
+        
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .priority-item {
             background: #ffffff;
-            padding: 24px;
+            padding: 16px;
             border-radius: 8px;
             border: 1px solid #e5e7eb;
         }
         
-        .methodology-number {
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 32px;
-            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+        
+        .priority-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .priority-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .priority-low {
+            background: #d1fae5;
+            color: #057a69;
+        }
+        
+        .priority-list {
+            list-style: none;
+        }
+        
+        .priority-list li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #6b7280;
+            padding-left: 16px;
+            position: relative;
+        }
+        
+        .priority-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #034f46;
+        }
+        
+        .insight-box {
+            background: #e6f7f5;
+            border-left: 4px solid #034f46;
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 40px;
+        }
+        
+        .insight-title {
+            font-size: 18px;
+            font-weight: 600;
             color: #034f46;
             margin-bottom: 12px;
         }
         
-        .methodology-title {
-            font-size: 16px;
-            font-weight: 600;
+        .insight-content {
+            font-size: 15px;
             color: #111827;
-            margin-bottom: 8px;
-        }
-        
-        .methodology-desc {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .footer {
-            background: #111827;
-            color: #9ca3af;
-            padding: 60px 0 40px;
+            background: #f9fafb;
+            padding: 40px 0;
+            border-top: 1px solid #e5e7eb;
         }
         
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-brand {
-            max-width: 500px;
-        }
-        
-        .footer-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .footer-text {
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s ease;
+            color: #6b7280;
         }
         
-        .footer-links a:hover {
-            color: #ffffff;
-        }
-        
-        .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid #374151;
-            text-align: center;
+        .footer-meta {
             font-size: 13px;
+            color: #9ca3af;
         }
         
         @media (max-width: 1024px) {
+            .key-points {
+                grid-template-columns: 1fr;
+            }
+            
             .chart-grid {
                 grid-template-columns: 1fr;
             }
             
-            .chart-card.full-width {
-                grid-column: span 1;
-            }
-            
-            .swot-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .methodology-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
+            .priority-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -565,12 +525,23 @@
             }
             
             .report-title {
-                font-size: 36px;
+                font-size: 32px;
             }
             
             .report-meta {
                 flex-direction: column;
                 gap: 16px;
+            }
+            
+            .timeline {
+                padding-left: 40px;
+            }
+            
+            .timeline-marker {
+                left: -40px;
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
             }
         }
     </style>
@@ -579,98 +550,67 @@
     <!-- Report Header -->
     <header class="report-header">
         <div class="container">
-            <h1 class="report-title">Voice-to-Text AI Market Research Report 2026</h1>
+            <h1 class="report-title">Voice-to-Text AI Market Analysis</h1>
             <p class="report-subtitle">
-                Comprehensive analysis of the voice-to-text artificial intelligence market, competitive landscape, and strategic recommendations for market participants.
+                Strategic analysis of market competition, technology innovation, and product evolution in the voice-to-text AI industry
             </p>
             <div class="report-meta">
                 <div class="meta-item">
                     <span class="meta-label">Report Date</span>
-                    <span class="meta-value">April 7, 2026</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Data Confidence</span>
-                    <span class="meta-value">85-90%</span>
+                    <span class="meta-value">April 2026</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label">Data Sources</span>
-                    <span class="meta-value">251 data points, 2 independent datasets</span>
+                    <span class="meta-value">251 data points</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Analyst</span>
-                    <span class="meta-value">Little Shrimp 🦐</span>
+                    <span class="meta-label">Confidence Level</span>
+                    <span class="meta-value">85-90%</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Executive Summary -->
+    <!-- Section 1: Market Analysis -->
     <section>
         <div class="container">
-            <h2 class="section-title">Executive Summary</h2>
-            <p class="section-subtitle">Key findings and strategic insights from comprehensive market analysis</p>
+            <div class="section-number">01 / Market Analysis</div>
+            <h2 class="section-title">Competitive Landscape</h2>
+            <p class="section-question">
+                分析类似软件应用在未来市场中可能面临的竞争态势
+            </p>
             
-            <div class="executive-summary">
-                <h3>Market Overview</h3>
-                <p>
-                    The voice-to-text AI market is experiencing unprecedented growth, driven by advances in automatic speech recognition (ASR) and large language model (LLM) technologies. Wispr Flow has emerged as a market leader with $81M in total funding, 270+ Fortune 500 clients, and industry-leading conversion and retention metrics.
-                </p>
-                <p>
-                    However, the competitive landscape is intensifying with Google's recent entry into the market with Eloquent, a free offline alternative. This report provides comprehensive analysis of market dynamics, competitive positioning, and strategic recommendations for sustained growth.
-                </p>
-            </div>
-            
-            <div class="key-findings">
-                <div class="finding-card">
-                    <div class="finding-number">$81M</div>
-                    <div class="finding-title">Total Funding</div>
-                    <div class="finding-description">Wispr Flow has raised $81M across multiple rounds, demonstrating strong investor confidence in the voice-to-text market opportunity.</div>
+            <div class="key-points">
+                <div class="point-card">
+                    <div class="point-icon">🏆</div>
+                    <h3 class="point-title">Market Leaders</h3>
+                    <p class="point-description">
+                        Wispr Flow leads with $81M funding and 270+ Fortune 500 clients. Strong product-market fit with 20% conversion rate (5x industry average).
+                    </p>
                 </div>
                 
-                <div class="finding-card">
-                    <div class="finding-number">20%</div>
-                    <div class="finding-title">Conversion Rate</div>
-                    <div class="finding-description">5x industry average conversion rate, indicating strong product-market fit and effective go-to-market strategy.</div>
+                <div class="point-card">
+                    <div class="point-icon">⚠️</div>
+                    <h3 class="point-title">Key Threats</h3>
+                    <p class="point-description">
+                        Google's free entry (Eloquent) disrupts pricing. Open source alternatives (QuQu) and privacy-focused competitors (Willow) gaining traction.
+                    </p>
                 </div>
                 
-                <div class="finding-card">
-                    <div class="finding-number">70%</div>
-                    <div class="finding-title">12-Month Retention</div>
-                    <div class="finding-description">75% higher than industry average, demonstrating exceptional user satisfaction and product stickiness.</div>
-                </div>
-                
-                <div class="finding-card">
-                    <div class="finding-number">100x</div>
-                    <div class="finding-title">YoY User Growth</div>
-                    <div class="finding-description">10x industry average growth rate, indicating rapid market adoption and strong word-of-mouth.</div>
-                </div>
-                
-                <div class="finding-card">
-                    <div class="finding-number">270+</div>
-                    <div class="finding-title">Fortune 500 Clients</div>
-                    <div class="finding-description">Strong enterprise adoption with 270+ Fortune 500 companies, demonstrating enterprise-grade reliability.</div>
-                </div>
-                
-                <div class="finding-card">
-                    <div class="finding-number">12.77%</div>
-                    <div class="finding-title">CER Error Rate</div>
-                    <div class="finding-description">Character Error Rate at industry average, with room for improvement to match Typeless's 7.00%.</div>
+                <div class="point-card">
+                    <div class="point-icon">📊</div>
+                    <h3 class="point-title">Market Dynamics</h3>
+                    <p class="point-description">
+                        Price war compressing margins. Offline capability becoming standard. Enterprise compliance (SOC 2, HIPAA) as key differentiator.
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Market Data & Analysis -->
-    <section class="data-section">
-        <div class="container">
-            <h2 class="section-title">Market Data & Analysis</h2>
-            <p class="section-subtitle">Quantitative analysis of market performance and competitive positioning</p>
             
             <div class="chart-grid">
                 <div class="chart-card">
                     <div class="chart-header">
-                        <h3 class="chart-title">Competitive Performance Comparison</h3>
-                        <p class="chart-description">Technical metrics comparison across major voice-to-text platforms</p>
+                        <h3 class="chart-title">Competitive Performance Metrics</h3>
+                        <p class="chart-subtitle">Key performance indicators comparison</p>
                     </div>
                     <div class="chart-container">
                         <canvas id="performanceChart"></canvas>
@@ -680,32 +620,21 @@
                 <div class="chart-card">
                     <div class="chart-header">
                         <h3 class="chart-title">Market Share Distribution</h3>
-                        <p class="chart-description">Estimated market share by major players in voice-to-text AI market</p>
+                        <p class="chart-subtitle">Estimated market share by platform</p>
                     </div>
                     <div class="chart-container">
                         <canvas id="marketShareChart"></canvas>
                     </div>
                 </div>
-                
-                <div class="chart-card full-width">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Technical Capabilities Radar</h3>
-                        <p class="chart-description">Multi-dimensional technical capability assessment (0-100 scale)</p>
-                    </div>
-                    <div class="chart-container" style="height: 400px;">
-                        <canvas id="radarChart"></canvas>
-                    </div>
-                </div>
             </div>
             
-            <h3 style="font-size: 24px; font-weight: 600; color: #034f46; margin-bottom: 24px;">Competitive Landscape</h3>
             <table class="data-table">
                 <thead>
                     <tr>
                         <th>Product</th>
                         <th>Funding</th>
                         <th>Platforms</th>
-                        <th>Offline Mode</th>
+                        <th>Offline</th>
                         <th>Pricing</th>
                         <th>CER</th>
                         <th>Core Advantage</th>
@@ -716,7 +645,7 @@
                         <td><strong>Wispr Flow</strong></td>
                         <td>$81M</td>
                         <td>Mac/Win/iOS/Android</td>
-                        <td><span class="badge badge-warning">No</span></td>
+                        <td><span class="badge badge-error">No</span></td>
                         <td>$15/mo</td>
                         <td>12.77%</td>
                         <td><span class="badge badge-success">Cross-platform, Enterprise</span></td>
@@ -759,152 +688,378 @@
                     </tr>
                 </tbody>
             </table>
+            
+            <div class="insight-box">
+                <h3 class="insight-title">💡 Key Insight</h3>
+                <p class="insight-content">
+                    <strong>Wispr Flow's competitive advantages:</strong> Cross-platform coverage, enterprise compliance, and strong retention (70%) position it well against free alternatives. However, lack of offline mode and higher CER (12.77% vs 7.00%) present vulnerabilities. Enterprise focus and compliance certifications provide defensible moat against consumer-focused competitors.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- SWOT Analysis -->
+    <!-- Section 2: Technology Analysis -->
+    <section style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-number">02 / Technology Analysis</div>
+            <h2 class="section-title">Technology Innovation</h2>
+            <p class="section-question">
+                分析新一代语音输入法为何能带来更好的用户体验——它通过哪些技术解决了哪些问题？
+            </p>
+            
+            <div class="key-points">
+                <div class="point-card">
+                    <div class="point-icon">🎯</div>
+                    <h3 class="point-title">ASR + LLM Integration</h3>
+                    <p class="point-description">
+                        Traditional ASR → Modern ASR + LLM post-processing. Intent understanding vs. simple transcription. Contextual awareness and smart formatting.
+                    </p>
+                </div>
+                
+                <div class="point-card">
+                    <div class="point-icon">✨</div>
+                    <h3 class="point-title">User Experience Improvements</h3>
+                    <p class="point-description">
+                        Auto-remove filler words ("um", "uh"). Fix grammar and punctuation. Understand context and intent. Personal dictionary learning.
+                    </p>
+                </div>
+                
+                <div class="point-card">
+                    <div class="point-icon">⚡</div>
+                    <h3 class="point-title">Technical Advantages</h3>
+                    <p class="point-description">
+                        &lt;200ms latency. 100+ language support. Cross-device sync. Privacy-preserving processing. Multi-language code-switching.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="chart-grid">
+                <div class="chart-card full-width" style="grid-column: span 2;">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Technology Evolution: Traditional vs. Modern Voice-to-Text</h3>
+                        <p class="chart-subtitle">How next-generation technology solves user pain points</p>
+                    </div>
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="techComparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Technical Capabilities Radar</h3>
+                        <p class="chart-subtitle">Multi-dimensional technical assessment (0-100 scale)</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">User Experience Comparison</h3>
+                        <p class="chart-subtitle">Subjective user satisfaction scores</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="uxChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box">
+                <h3 class="insight-title">💡 Technology Insight</h3>
+                <p class="insight-content">
+                    <strong>Next-generation voice-to-text solves 5 key problems:</strong> (1) Filler word removal for cleaner output, (2) Context-aware punctuation and formatting, (3) Intent understanding beyond literal transcription, (4) Personal dictionary for domain-specific terminology, (5) Multi-language code-switching for global users. The key differentiator is LLM post-processing that transforms raw ASR output into polished, professional text.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Product Evolution -->
     <section>
         <div class="container">
-            <h2 class="section-title">SWOT Analysis</h2>
-            <p class="section-subtitle">Strategic assessment of Wispr Flow's market position</p>
+            <div class="section-number">03 / Product Evolution</div>
+            <h2 class="section-title">Product Roadmap</h2>
+            <p class="section-question">
+                这类产品从一个最简单的 MVP 到一个相对成熟的商业软件，完整的功能清单应该是怎样的？在不同阶段中，哪些功能优先级更高，哪些可以后续迭代？
+            </p>
             
-            <div class="swot-grid">
-                <div class="swot-card strengths">
-                    <h3 class="swot-title">
-                        <span style="color: #10b981;">●</span>
-                        Strengths
-                    </h3>
-                    <ul class="swot-list">
-                        <li>Cross-platform coverage (Mac/Win/iOS/Android)</li>
-                        <li>Enterprise compliance certifications (SOC 2, HIPAA)</li>
-                        <li>High retention rate (70% annual retention)</li>
-                        <li>270+ Fortune 500 company endorsements</li>
-                        <li>Intent-driven transcription technology</li>
-                        <li>Strong conversion rate (20%, 5x industry average)</li>
-                    </ul>
+            <div class="timeline">
+                <!-- Stage 1: MVP -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">MVP Stage</h3>
+                            <span class="timeline-period">2024 Q4</span>
+                        </div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Basic voice-to-text transcription</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Cross-app usage (system-wide)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Auto-punctuation</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Filler word removal ("um", "uh")</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">English language support</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Hotkey activation</div>
+                            </div>
+                        </div>
+                        <div class="priority-section">
+                            <h4 class="priority-title">Success Metrics</h4>
+                            <div class="priority-grid">
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-high">Primary</span>
+                                    <ul class="priority-list">
+                                        <li>DAU &gt; 1,000</li>
+                                        <li>Retention &gt; 40%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-medium">Secondary</span>
+                                    <ul class="priority-list">
+                                        <li>NPS &gt; 30</li>
+                                        <li>CER &lt; 15%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-low">Future</span>
+                                    <ul class="priority-list">
+                                        <li>Multi-language</li>
+                                        <li>Enterprise features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="swot-card weaknesses">
-                    <h3 class="swot-title">
-                        <span style="color: #ef4444;">●</span>
-                        Weaknesses
-                    </h3>
-                    <ul class="swot-list">
-                        <li>CER 12.77% lower than Typeless (7.00%)</li>
-                        <li>Limited Chinese language optimization</li>
-                        <li>Requires internet connection (no offline mode)</li>
-                        <li>Price-sensitive user churn risk</li>
-                        <li>Higher learning curve compared to competitors</li>
-                        <li>Smaller team compared to Google-backed competitors</li>
-                    </ul>
+                <!-- Stage 2: Growth -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Growth Stage</h3>
+                            <span class="timeline-period">2025</span>
+                        </div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Windows version</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">iOS version</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Multi-language support (100+)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Personal dictionary</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Snippet library (voice shortcuts)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Style matching (tone adjustment)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Enterprise compliance (SOC 2, HIPAA)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Team collaboration features</div>
+                            </div>
+                        </div>
+                        <div class="priority-section">
+                            <h4 class="priority-title">Success Metrics</h4>
+                            <div class="priority-grid">
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-high">Primary</span>
+                                    <ul class="priority-list">
+                                        <li>MAU &gt; 100,000</li>
+                                        <li>Conversion &gt; 15%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-medium">Secondary</span>
+                                    <ul class="priority-list">
+                                        <li>Enterprise &gt; 100</li>
+                                        <li>Retention &gt; 60%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-low">Future</span>
+                                    <ul class="priority-list">
+                                        <li>Offline mode</li>
+                                        <li>API access</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="swot-card opportunities">
-                    <h3 class="swot-title">
-                        <span style="color: #3b82f6;">●</span>
-                        Opportunities
-                    </h3>
-                    <ul class="swot-list">
-                        <li>Chinese market expansion (FunASR integration)</li>
-                        <li>Open source model integration opportunities</li>
-                        <li>Enterprise customization for vertical industries</li>
-                        <li>Hardware partnerships (AR glasses, etc.)</li>
-                        <li>Voice OS vision and platform play</li>
-                        <li>Offline enterprise version development</li>
-                    </ul>
+                <!-- Stage 3: Maturity -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Maturity Stage</h3>
+                            <span class="timeline-period">2026-2027</span>
+                        </div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Android version</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Offline mode (enterprise)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Chinese optimization (FunASR)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <div class="feature-text">Command mode (advanced controls)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Meeting notes with AI summary</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Real-time translation</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">API access for integrations</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">⏳</div>
+                                <div class="feature-text">Error rate &lt; 5%</div>
+                            </div>
+                        </div>
+                        <div class="priority-section">
+                            <h4 class="priority-title">Success Metrics</h4>
+                            <div class="priority-grid">
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-high">Primary</span>
+                                    <ul class="priority-list">
+                                        <li>MAU &gt; 1M</li>
+                                        <li>Revenue &gt; $50M</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-medium">Secondary</span>
+                                    <ul class="priority-list">
+                                        <li>Fortune 500 &gt; 500</li>
+                                        <li>CER &lt; 5%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-low">Future</span>
+                                    <ul class="priority-list">
+                                        <li>Voice OS</li>
+                                        <li>Hardware partnerships</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="swot-card threats">
-                    <h3 class="swot-title">
-                        <span style="color: #f59e0b;">●</span>
-                        Threats
-                    </h3>
-                    <ul class="swot-list">
-                        <li>Google free entry disrupting pricing model</li>
-                        <li>Open source alternatives (QuQu, Voquill)</li>
-                        <li>Price war compressing profit margins</li>
-                        <li>Privacy concerns with cloud processing</li>
-                        <li>Lowered technical barriers for new entrants</li>
-                        <li>Large tech companies with deep pockets entering market</li>
-                    </ul>
+                <!-- Stage 4: Platform -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Platform Stage</h3>
+                            <span class="timeline-period">2028+</span>
+                        </div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">Voice OS platform</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">Multimodal input (voice + gesture)</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">AR glasses integration</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">Brain-computer interface R&D</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">Hardware self-development</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-check">○</div>
+                                <div class="feature-text">International expansion</div>
+                            </div>
+                        </div>
+                        <div class="priority-section">
+                            <h4 class="priority-title">Success Metrics</h4>
+                            <div class="priority-grid">
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-high">Primary</span>
+                                    <ul class="priority-list">
+                                        <li>Valuation &gt; $1B</li>
+                                        <li>Market share &gt; 20%</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-medium">Secondary</span>
+                                    <ul class="priority-list">
+                                        <li>Partners &gt; 100</li>
+                                        <li>Developer ecosystem</li>
+                                    </ul>
+                                </div>
+                                <div class="priority-item">
+                                    <span class="priority-badge priority-low">Future</span>
+                                    <ul class="priority-list">
+                                        <li>Next-gen input methods</li>
+                                        <li>Platform ecosystem</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Strategic Recommendations -->
-    <section class="data-section">
-        <div class="container">
-            <h2 class="section-title">Strategic Recommendations</h2>
-            <p class="section-subtitle">Prioritized action items for short, mid, and long-term growth</p>
             
-            <div class="recommendations">
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3 class="recommendation-title">Short-term Priorities (2026)</h3>
-                        <span class="timeline-badge timeline-short">High Priority</span>
-                    </div>
-                    <ul class="recommendation-actions">
-                        <li>Integrate FunASR for Chinese language optimization</li>
-                        <li>Launch offline enterprise version to address privacy concerns</li>
-                        <li>Reduce CER error rate to below 5% through model improvements</li>
-                        <li>Android tablet optimization for enterprise users</li>
-                        <li>Enhance customer success program for Fortune 500 accounts</li>
-                    </ul>
-                </div>
-                
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3 class="recommendation-title">Mid-term Priorities (2027)</h3>
-                        <span class="timeline-badge timeline-mid">Medium Priority</span>
-                    </div>
-                    <ul class="recommendation-actions">
-                        <li>Voice OS strategy launch and developer platform</li>
-                        <li>Meeting notes feature with AI-powered summarization</li>
-                        <li>API access for third-party integrations</li>
-                        <li>Real-time translation capabilities</li>
-                        <li>Enterprise SSO and advanced admin controls</li>
-                    </ul>
-                </div>
-                
-                <div class="recommendation-item">
-                    <div class="recommendation-header">
-                        <h3 class="recommendation-title">Long-term Priorities (2028-2030)</h3>
-                        <span class="timeline-badge timeline-long">Low Priority</span>
-                    </div>
-                    <ul class="recommendation-actions">
-                        <li>Brain-computer interface R&D for next-gen input</li>
-                        <li>AR glasses partnership for hands-free operation</li>
-                        <li>Hardware self-development for integrated solution</li>
-                        <li>Voice OS ecosystem and marketplace</li>
-                        <li>International expansion (Asia, Europe, LATAM)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Methodology -->
-            <div class="methodology">
-                <h3>Research Methodology</h3>
-                <p style="color: #6b7280; margin-bottom: 24px;">
-                    This report is based on comprehensive primary and secondary research, including competitive analysis, user interviews, and technical benchmarking.
+            <div class="insight-box">
+                <h3 class="insight-title">💡 Product Insight</h3>
+                <p class="insight-content">
+                    <strong>Priority Framework:</strong> MVP focuses on core transcription quality and cross-platform availability. Growth stage adds enterprise features and compliance. Maturity stage addresses competitive gaps (offline, Chinese, accuracy). Platform stage transforms from product to ecosystem. Key insight: Enterprise compliance and cross-platform coverage provide defensible moats in growth stage, while accuracy improvements (CER &lt; 5%) are critical for maturity stage competitiveness.
                 </p>
-                <div class="methodology-grid">
-                    <div class="methodology-item">
-                        <div class="methodology-number">251</div>
-                        <div class="methodology-title">Data Points</div>
-                        <div class="methodology-desc">Collected from 2 independent datasets covering market metrics, user feedback, and technical benchmarks.</div>
-                    </div>
-                    <div class="methodology-item">
-                        <div class="methodology-number">85-90%</div>
-                        <div class="methodology-title">Data Confidence</div>
-                        <div class="methodology-desc">Cross-validated data points with multiple sources to ensure accuracy and reliability.</div>
-                    </div>
-                    <div class="methodology-item">
-                        <div class="methodology-number">5</div>
-                        <div class="methodology-title">Competitors</div>
-                        <div class="methodology-desc">Comprehensive analysis of major voice-to-text platforms including Google, Willow, QuQu, and Typeless.</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -913,59 +1068,30 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <h4 class="footer-title">Voice-to-Text AI Market Research Report 2026</h4>
-                    <p class="footer-text">
-                        This comprehensive market research report provides in-depth analysis of the voice-to-text artificial intelligence market, competitive landscape, and strategic recommendations for market participants.
-                    </p>
-                    <p class="footer-text" style="font-size: 13px; color: #6b7280;">
-                        Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
-                    </p>
+                <div class="footer-text">
+                    Voice-to-Text AI Market Analysis Report 2026
                 </div>
-                
-                <div>
-                    <h4 class="footer-title">Report Sections</h4>
-                    <ul class="footer-links">
-                        <li><a href="#executive-summary">Executive Summary</a></li>
-                        <li><a href="#market-data">Market Data & Analysis</a></li>
-                        <li><a href="#swot">SWOT Analysis</a></li>
-                        <li><a href="#recommendations">Recommendations</a></li>
-                    </ul>
+                <div class="footer-meta">
+                    Data Sources: 251 data points | Confidence: 85-90% | April 2026
                 </div>
-                
-                <div>
-                    <h4 class="footer-title">Resources</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank">Full Report (Feishu)</a></li>
-                        <li><a href="#">Download PDF</a></li>
-                        <li><a href="#">Methodology</a></li>
-                        <li><a href="#">Data Sources</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐</p>
-                <p style="margin-top: 8px;">⚠️ This report is for reference only and does not constitute investment advice</p>
-                <p style="margin-top: 24px; font-size: 12px; color: #6b7280;">© 2026 Voice-to-Text AI Market Research. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Performance Comparison Chart
+        // Performance Chart
         const perfCtx = document.getElementById('performanceChart').getContext('2d');
         new Chart(perfCtx, {
             type: 'bar',
             data: {
-                labels: ['Conversion Rate', 'Retention', 'Growth', 'CER (Lower is better)'],
+                labels: ['Conversion', 'Retention', 'Growth', 'CER (↓)'],
                 datasets: [{
                     label: 'Wispr Flow',
                     data: [20, 70, 100, 12.77],
                     backgroundColor: '#034f46',
                     borderRadius: 6
                 }, {
-                    label: 'Industry Average',
+                    label: 'Industry Avg',
                     data: [4, 40, 10, 10],
                     backgroundColor: '#e5e7eb',
                     borderRadius: 6
@@ -979,10 +1105,7 @@
                         display: true,
                         position: 'bottom',
                         labels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 13
-                            },
+                            font: { family: "'Inter', sans-serif", size: 13 },
                             color: '#111827'
                         }
                     }
@@ -990,28 +1113,12 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: {
-                            color: '#f9fafb'
-                        },
-                        ticks: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 12
-                            },
-                            color: '#6b7280'
-                        }
+                        grid: { color: '#f9fafb' },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
                     },
                     x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 12
-                            },
-                            color: '#6b7280'
-                        }
+                        grid: { display: false },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
                     }
                 }
             }
@@ -1022,17 +1129,10 @@
         new Chart(shareCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Wispr Flow', 'Google Eloquent', 'Willow', 'QuQu', 'Typeless', 'Others'],
+                labels: ['Wispr Flow', 'Google', 'Willow', 'QuQu', 'Typeless', 'Others'],
                 datasets: [{
                     data: [35, 25, 15, 10, 10, 5],
-                    backgroundColor: [
-                        '#034f46',
-                        '#057a69',
-                        '#10b981',
-                        '#3b82f6',
-                        '#8b5cf6',
-                        '#e5e7eb'
-                    ],
+                    backgroundColor: ['#034f46', '#057a69', '#10b981', '#3b82f6', '#8b5cf6', '#e5e7eb'],
                     borderWidth: 0
                 }]
             },
@@ -1044,10 +1144,7 @@
                         display: true,
                         position: 'bottom',
                         labels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 13
-                            },
+                            font: { family: "'Inter', sans-serif", size: 13 },
                             color: '#111827'
                         }
                     }
@@ -1055,12 +1152,58 @@
             }
         });
         
-        // Technical Radar Chart
+        // Tech Comparison Chart
+        const techCtx = document.getElementById('techComparisonChart').getContext('2d');
+        new Chart(techCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Filler Removal', 'Context Awareness', 'Intent Understanding', 'Personal Dictionary', 'Multi-language', 'Latency'],
+                datasets: [{
+                    label: 'Traditional ASR',
+                    data: [30, 40, 20, 30, 50, 60],
+                    backgroundColor: '#e5e7eb',
+                    borderRadius: 6
+                }, {
+                    label: 'Modern ASR+LLM',
+                    data: [95, 90, 85, 85, 90, 95],
+                    backgroundColor: '#034f46',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            font: { family: "'Inter', sans-serif", size: 13 },
+                            color: '#111827'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#f9fafb' },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
+                    }
+                }
+            }
+        });
+        
+        // Radar Chart
         const radarCtx = document.getElementById('radarChart').getContext('2d');
         new Chart(radarCtx, {
             type: 'radar',
             data: {
-                labels: ['CER Error Rate', 'Subjective Score', 'Latency', 'Language Support', 'Input Speed'],
+                labels: ['CER', 'Subjective', 'Latency', 'Languages', 'Speed'],
                 datasets: [{
                     label: 'Wispr Flow',
                     data: [87, 77, 90, 95, 90],
@@ -1091,17 +1234,10 @@
                     r: {
                         beginAtZero: true,
                         max: 100,
-                        grid: {
-                            color: 'rgba(3, 79, 70, 0.1)'
-                        },
-                        angleLines: {
-                            color: 'rgba(3, 79, 70, 0.1)'
-                        },
+                        grid: { color: 'rgba(3, 79, 70, 0.1)' },
+                        angleLines: { color: 'rgba(3, 79, 70, 0.1)' },
                         pointLabels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 14
-                            },
+                            font: { family: "'Inter', sans-serif", size: 14 },
                             color: '#111827'
                         }
                     }
@@ -1109,12 +1245,43 @@
                 plugins: {
                     legend: {
                         labels: {
-                            font: {
-                                family: "'Inter', sans-serif",
-                                size: 14
-                            },
+                            font: { family: "'Inter', sans-serif", size: 14 },
                             color: '#111827'
                         }
+                    }
+                }
+            }
+        });
+        
+        // UX Chart
+        const uxCtx = document.getElementById('uxChart').getContext('2d');
+        new Chart(uxCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Ease of Use', 'Accuracy', 'Speed', 'Features', 'Privacy'],
+                datasets: [{
+                    label: 'User Satisfaction',
+                    data: [85, 82, 90, 88, 75],
+                    backgroundColor: '#034f46',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#f9fafb' },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { family: "'Inter', sans-serif", size: 12 }, color: '#6b7280' }
                     }
                 }
             }
