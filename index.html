@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
         tailwind.config = {
@@ -45,7 +45,8 @@
                         '48': '48px',
                         '64': '64px',
                         '80': '80px',
-                        '120': '120px'
+                        '120': '120px',
+                        '160': '160px'
                     }
                 }
             }
@@ -64,6 +65,8 @@
             color: #111827;
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .fade-in {
@@ -98,7 +101,7 @@
         
         h1 {
             font-size: 72px;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 24px;
@@ -107,7 +110,7 @@
         
         h2 {
             font-size: 48px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 48px;
             color: #034f46;
@@ -125,6 +128,7 @@
             color: #6b7280;
             font-weight: 400;
             line-height: 1.5;
+            max-width: 600px;
         }
         
         .metric-card {
@@ -155,6 +159,8 @@
             color: #6b7280;
             margin-bottom: 4px;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .metric-delta {
@@ -223,6 +229,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             border: none;
+            cursor: pointer;
         }
         
         .btn-primary:hover {
@@ -243,6 +250,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             border: 2px solid #034f46;
+            cursor: pointer;
         }
         
         .btn-secondary:hover {
@@ -251,7 +259,7 @@
             transform: translateY(-2px);
         }
         
-        table {
+        .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 40px 0;
@@ -261,7 +269,7 @@
             border: 1px solid #e5e7eb;
         }
         
-        th {
+        .data-table th {
             text-align: left;
             padding: 20px 16px;
             background: #034f46;
@@ -272,18 +280,18 @@
             letter-spacing: 0.05em;
         }
         
-        td {
+        .data-table td {
             padding: 20px 16px;
             border-bottom: 1px solid #e5e7eb;
             font-size: 15px;
             color: #111827;
         }
         
-        tr:last-child td {
+        .data-table tr:last-child td {
             border-bottom: none;
         }
         
-        tr:hover td {
+        .data-table tr:hover td {
             background: #f9fafb;
         }
         
@@ -309,6 +317,21 @@
         .badge-success {
             background: #d1fae5;
             color: #057a69;
+        }
+        
+        .chart-container {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .chart-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #034f46;
+            margin-bottom: 24px;
         }
         
         .comparison-grid {
@@ -372,6 +395,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
         
         .nav-content {
@@ -385,6 +409,7 @@
             font-size: 24px;
             font-weight: 700;
             text-decoration: none;
+            font-family: 'Inter', sans-serif;
         }
         
         .nav-links {
@@ -403,6 +428,206 @@
         
         .nav-link:hover {
             opacity: 0.8;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 160px 0 120px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .recommendation-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .recommendation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
+            border-color: #034f46;
+        }
+        
+        .recommendation-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #034f46;
+        }
+        
+        .recommendation-list {
+            list-style: none;
+        }
+        
+        .recommendation-list li {
+            padding: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #111827;
+            border-bottom: 1px solid #f9fafb;
+        }
+        
+        .recommendation-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .recommendation-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #034f46;
+            font-weight: 600;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+        
+        .priority-high {
+            background: #fef2f2;
+            color: #ef4444;
+        }
+        
+        .priority-medium {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+        
+        .priority-low {
+            background: #d1fae5;
+            color: #057a69;
+        }
+        
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .swot-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .swot-card:hover {
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
+            border-color: #034f46;
+        }
+        
+        .swot-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #034f46;
+        }
+        
+        .swot-list {
+            list-style: none;
+        }
+        
+        .swot-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #111827;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .swot-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .footer {
+            background: #f9fafb;
+            padding: 80px 0 40px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            max-width: 400px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #034f46;
+            margin-bottom: 16px;
+        }
+        
+        .footer-desc {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .footer-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #034f46;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #034f46;
+        }
+        
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -429,6 +654,11 @@
             .nav-links {
                 display: none;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
     </style>
 </head>
@@ -438,10 +668,11 @@
         <div class="container nav-content">
             <a href="#" class="nav-logo">Wispr Flow Research</a>
             <div class="nav-links">
-                <a href="#metrics" class="nav-link">Metrics</a>
+                <a href="#overview" class="nav-link">Overview</a>
                 <a href="#competition" class="nav-link">Competition</a>
                 <a href="#technology" class="nav-link">Technology</a>
                 <a href="#product" class="nav-link">Product</a>
+                <a href="#swot" class="nav-link">SWOT</a>
                 <a href="#recommendations" class="nav-link">Recommendations</a>
             </div>
             <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" class="btn-secondary" style="padding: 10px 20px; font-size: 14px;">
@@ -451,17 +682,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section style="padding: 160px 0 120px; background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);">
+    <section class="hero-section">
         <div class="container">
             <div class="fade-in">
-                <h1>Wispr Flow 2026<br>Market Research</h1>
-                <p class="subtitle" style="max-width: 600px; margin-top: 24px;">
+                <h1>Wispr Flow 2026<br>Market Research Report</h1>
+                <p class="subtitle">
                     Comprehensive market analysis of the voice-to-text AI landscape. Data confidence: <span style="color: #034f46; font-weight: 600;">85-90%</span>. April 7, 2026.
                 </p>
-                <div style="margin-top: 48px; display: flex; gap: 16px;">
-                    <a href="#metrics" class="btn-primary">
-                        View Analysis
-                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <div style="margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#overview" class="btn-primary">
+                        Explore Analysis
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </a>
@@ -473,15 +704,15 @@
         </div>
     </section>
 
-    <!-- Metrics Section -->
-    <section id="metrics" style="background: #ffffff;">
+    <!-- Key Metrics Section -->
+    <section id="overview">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Key Metrics</h2>
+                <h2>Key Performance Metrics</h2>
                 <p class="subtitle">Performance indicators and market position</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="stats-grid">
                 <div class="metric-card fade-in">
                     <div class="metric-value">$81M</div>
                     <div class="metric-label">Total Funding</div>
@@ -516,16 +747,16 @@
         </div>
     </section>
 
-    <!-- Market Competition -->
+    <!-- Market Competition Section -->
     <section id="competition" style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Market Competition</h2>
-                <p class="subtitle">Competitive landscape analysis of major voice-to-text players</p>
+                <h2>Competitive Landscape</h2>
+                <p class="subtitle">Analysis of major voice-to-text players in the market</p>
             </div>
             
             <div class="fade-in">
-                <table>
+                <table class="data-table">
                     <thead>
                         <tr>
                             <th>Product</th>
@@ -589,12 +820,16 @@
         </div>
     </section>
 
-    <!-- Technology Comparison -->
+    <!-- Technology Section -->
     <section id="technology">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Technology Stack</h2>
-                <p class="subtitle">From voice input to structured text</p>
+                <p class="subtitle">From voice input to structured text output</p>
+            </div>
+            
+            <div class="chart-container fade-in">
+                <canvas id="techChart"></canvas>
             </div>
             
             <div class="comparison-grid fade-in">
@@ -610,22 +845,22 @@
             
             <div class="comparison-grid fade-in">
                 <div class="comparison-item">
-                    <h4 style="color: #6b7280;">Before</h4>
+                    <h4 style="color: #6b7280;">Before Processing</h4>
                     <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #f9fafb; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
-                        "Umm, hope your week has started well… I was talking to Cheyene earlier but reception was really bad and I think their going to handle the first part of the project, but I'm not totally sure..."
+                        "Umm, hope your week has started well… I was talking to Cheyene earlier but reception was really bad..."
                     </p>
                 </div>
                 <div class="comparison-item">
-                    <h4>After</h4>
+                    <h4>After Processing</h4>
                     <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #e6f7f5; padding: 24px; border-radius: 12px; border: 1px solid #034f46;">
-                        Hope your week is off to a good start. I was talking to Cheyene earlier, but the reception was really bad. I think they're going to handle the first part of the project, but I'm not totally sure.
+                        Hope your week is off to a good start. I was talking to Cheyene earlier, but the reception was really bad.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Evolution -->
+    <!-- Product Evolution Section -->
     <section id="product" style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
@@ -638,118 +873,118 @@
                     <div class="timeline-number">1</div>
                     <h3>MVP Stage</h3>
                     <p style="color: #6b7280; margin-bottom: 16px;">2024 Q4</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
                         <span class="badge" style="background: #034f46; color: #ffffff;">Basic voice-to-text</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">Cross-app usage</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">Auto-punctuation</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">Filler word removal</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">DAU&gt;1k • Retention&gt;40% • NPS&gt;30</p>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">DAU&gt;1k • Retention&gt;40% • NPS&gt;30</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">2</div>
                     <h3>Growth Stage</h3>
                     <p style="color: #6b7280; margin-bottom: 16px;">2025</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
                         <span class="badge" style="background: #034f46; color: #ffffff;">Windows version</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">iOS version</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">Multi-language</span>
                         <span class="badge" style="background: #034f46; color: #ffffff;">Enterprise compliance</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;100k • Conversion&gt;15% • Enterprise&gt;100</p>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;100k • Conversion&gt;15% • Enterprise&gt;100</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">3</div>
                     <h3>Maturity Stage</h3>
                     <p style="color: #6b7280; margin-bottom: 16px;">2026-2027</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Android version</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Offline mode</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Chinese optimization</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Meeting notes</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;1M • Revenue&gt;$50M • Fortune 500&gt;500</p>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;1M • Revenue&gt;$50M • Fortune 500&gt;500</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">4</div>
                     <h3>Platform Stage</h3>
                     <p style="color: #6b7280; margin-bottom: 16px;">2028+</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Voice OS</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Multimodal input</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">AR glasses</span>
                         <span class="badge" style="background: #e5e7eb; color: #6b7280;">Brain-computer</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">Valuation&gt;$1B • Market share&gt;20% • Partners&gt;100</p>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">Valuation&gt;$1B • Market share&gt;20% • Partners&gt;100</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SWOT Analysis -->
-    <section>
+    <!-- SWOT Analysis Section -->
+    <section id="swot">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>SWOT Analysis</h2>
                 <p class="subtitle">Strategic assessment of market position</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-in">
-                <div class="feature-card">
-                    <h3>Strengths</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ Cross-platform coverage (Mac/Win/iOS/Android)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ Enterprise compliance (SOC 2, HIPAA)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ High retention (70% annual)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ 270+ Fortune 500 endorsements</li>
-                        <li style="padding: 8px 0;">✓ Intent-driven transcription</li>
+            <div class="swot-grid fade-in">
+                <div class="swot-card">
+                    <h3 class="swot-title">Strengths</h3>
+                    <ul class="swot-list">
+                        <li>✓ Cross-platform coverage (Mac/Win/iOS/Android)</li>
+                        <li>✓ Enterprise compliance (SOC 2, HIPAA)</li>
+                        <li>✓ High retention (70% annual)</li>
+                        <li>✓ 270+ Fortune 500 endorsements</li>
+                        <li>✓ Intent-driven transcription</li>
                     </ul>
                 </div>
                 
-                <div class="feature-card">
-                    <h3>Weaknesses</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ CER 12.77% vs Typeless 7%</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Limited Chinese optimization</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Requires internet connection</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Price-sensitive user churn</li>
-                        <li style="padding: 8px 0;">✕ Higher learning curve</li>
+                <div class="swot-card">
+                    <h3 class="swot-title">Weaknesses</h3>
+                    <ul class="swot-list">
+                        <li>✕ CER 12.77% vs Typeless 7%</li>
+                        <li>✕ Limited Chinese optimization</li>
+                        <li>✕ Requires internet connection</li>
+                        <li>✕ Price-sensitive user churn</li>
+                        <li>✕ Higher learning curve</li>
                     </ul>
                 </div>
                 
-                <div class="feature-card">
-                    <h3>Opportunities</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Chinese market expansion</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Open source integration (FunASR)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Enterprise customization</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Hardware partnerships</li>
-                        <li style="padding: 8px 0;">○ Voice OS vision</li>
+                <div class="swot-card">
+                    <h3 class="swot-title">Opportunities</h3>
+                    <ul class="swot-list">
+                        <li>○ Chinese market expansion</li>
+                        <li>○ Open source integration (FunASR)</li>
+                        <li>○ Enterprise customization</li>
+                        <li>○ Hardware partnerships</li>
+                        <li>○ Voice OS vision</li>
                     </ul>
                 </div>
                 
-                <div class="feature-card">
-                    <h3>Threats</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Google free entry</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Open source alternatives</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Price war margins</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Privacy concerns</li>
-                        <li style="padding: 8px 0;">⚠ Lowered technical barriers</li>
+                <div class="swot-card">
+                    <h3 class="swot-title">Threats</h3>
+                    <ul class="swot-list">
+                        <li>⚠ Google free entry</li>
+                        <li>⚠ Open source alternatives</li>
+                        <li>⚠ Price war margins</li>
+                        <li>⚠ Privacy concerns</li>
+                        <li>⚠ Lowered technical barriers</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- User Testimonials Section -->
     <section style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>What Users Say</h2>
+                <h2>User Testimonials</h2>
                 <p class="subtitle">Real feedback from professionals</p>
             </div>
             
@@ -775,7 +1010,7 @@
         </div>
     </section>
 
-    <!-- Recommendations -->
+    <!-- Strategic Recommendations Section -->
     <section id="recommendations">
         <div class="container">
             <div class="section-header fade-in">
@@ -784,65 +1019,35 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
-                <div class="feature-card" style="background: #ffffff;">
-                    <h3 style="color: #ef4444;">Short-term (2026)</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Integrate FunASR for Chinese</span>
-                        </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Launch offline enterprise version</span>
-                        </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Reduce error rate to &lt;5%</span>
-                        </li>
-                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Android tablet optimization</span>
-                        </li>
+                <div class="recommendation-card">
+                    <span class="priority-badge priority-high">Short-term (2026)</span>
+                    <h3 class="recommendation-title">High Priority</h3>
+                    <ul class="recommendation-list">
+                        <li>Integrate FunASR for Chinese</li>
+                        <li>Launch offline enterprise version</li>
+                        <li>Reduce error rate to &lt;5%</li>
+                        <li>Android tablet optimization</li>
                     </ul>
                 </div>
                 
-                <div class="feature-card" style="background: #ffffff;">
-                    <h3 style="color: #f59e0b;">Mid-term (2027)</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Voice OS strategy launch</span>
-                        </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Meeting notes feature</span>
-                        </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>API access</span>
-                        </li>
-                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Real-time translation</span>
-                        </li>
+                <div class="recommendation-card">
+                    <span class="priority-badge priority-medium">Mid-term (2027)</span>
+                    <h3 class="recommendation-title">Medium Priority</h3>
+                    <ul class="recommendation-list">
+                        <li>Voice OS strategy launch</li>
+                        <li>Meeting notes feature</li>
+                        <li>API access</li>
+                        <li>Real-time translation</li>
                     </ul>
                 </div>
                 
-                <div class="feature-card" style="background: #ffffff;">
-                    <h3 style="color: #10b981;">Long-term (2028-2030)</h3>
-                    <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Brain-computer interface R&D</span>
-                        </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>AR glasses partnership</span>
-                        </li>
-                        <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #034f46; margin-right: 8px;">→</span>
-                            <span>Hardware self-development</span>
-                        </li>
+                <div class="recommendation-card">
+                    <span class="priority-badge priority-low">Long-term (2028-2030)</span>
+                    <h3 class="recommendation-title">Low Priority</h3>
+                    <ul class="recommendation-list">
+                        <li>Brain-computer interface R&D</li>
+                        <li>AR glasses partnership</li>
+                        <li>Hardware self-development</li>
                     </ul>
                 </div>
             </div>
@@ -850,24 +1055,55 @@
     </section>
 
     <!-- Footer -->
-    <section style="padding: 80px 0; border-top: 1px solid #e5e7eb; background: #ffffff;">
+    <footer class="footer">
         <div class="container">
-            <div class="fade-in">
-                <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">
-                    Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
-                </p>
-                <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">
-                    Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐
-                </p>
-                <p style="font-size: 14px; color: #6b7280; margin-bottom: 24px;">
-                    <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" style="color: #034f46; text-decoration: underline; font-weight: 500;">View Full Report on Feishu</a>
-                </p>
-                <p style="font-size: 13px; color: #9ca3af;">
-                    ⚠️ This report is for reference only and does not constitute investment advice
-                </p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">Wispr Flow Research</div>
+                    <p class="footer-desc">
+                        Comprehensive market research report analyzing the voice-to-text AI landscape and Wispr Flow's market position.
+                    </p>
+                    <p style="color: #9ca3af; font-size: 13px;">
+                        Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Report</h4>
+                    <ul class="footer-links">
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#competition">Competition</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#product">Product</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Analysis</h4>
+                    <ul class="footer-links">
+                        <li><a href="#swot">SWOT Analysis</a></li>
+                        <li><a href="#recommendations">Recommendations</a></li>
+                        <li><a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank">Full Report</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Download PDF</a></li>
+                        <li><a href="#">Methodology</a></li>
+                        <li><a href="#">Data Sources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐</p>
+                <p style="margin-top: 8px;">⚠️ This report is for reference only and does not constitute investment advice</p>
+                <p style="margin-top: 24px; font-size: 12px; color: #d1d5db;">© 2026 Wispr Flow Research. All rights reserved.</p>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script>
         // Fade in animation
@@ -896,6 +1132,71 @@
                     });
                 }
             });
+        });
+        
+        // Technology Stack Chart
+        const techCtx = document.getElementById('techChart').getContext('2d');
+        new Chart(techCtx, {
+            type: 'radar',
+            data: {
+                labels: ['CER Error Rate', 'Subjective Score', 'Latency', 'Language Support', 'Input Speed'],
+                datasets: [{
+                    label: 'Wispr Flow',
+                    data: [87, 77, 90, 95, 90],
+                    backgroundColor: 'rgba(3, 79, 70, 0.2)',
+                    borderColor: '#034f46',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#034f46'
+                }, {
+                    label: 'Typeless',
+                    data: [95, 90, 85, 80, 85],
+                    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                    borderColor: '#ef4444',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#ef4444'
+                }, {
+                    label: 'Zhipu AI',
+                    data: [93, 91, 80, 85, 80],
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: '#10b981',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#10b981'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(3, 79, 70, 0.1)'
+                        },
+                        angleLines: {
+                            color: 'rgba(3, 79, 70, 0.1)'
+                        },
+                        pointLabels: {
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 14
+                            },
+                            color: '#111827'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                family: "'Inter', sans-serif",
+                                size: 14
+                            },
+                            color: '#111827'
+                        }
+                    }
+                }
+            }
         });
     </script>
 </body>
