@@ -9,6 +9,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wispr: {
+                            primary: '#034f46',
+                            secondary: '#057a69',
+                            light: '#e6f7f5',
+                            success: '#10b981',
+                            purple: '#8b5cf6',
+                            warning: '#f59e0b',
+                            error: '#ef4444'
+                        },
+                        neutral: {
+                            white: '#ffffff',
+                            light: '#f9fafb',
+                            border: '#e5e7eb',
+                            textSecondary: '#6b7280',
+                            text: '#111827',
+                            black: '#000000'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    borderRadius: {
+                        'wispr': '12px'
+                    },
+                    spacing: {
+                        '24': '24px',
+                        '32': '32px',
+                        '48': '48px',
+                        '64': '64px',
+                        '80': '80px',
+                        '120': '120px'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -18,8 +60,8 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FFFFFF;
-            color: #000000;
+            background: #ffffff;
+            color: #111827;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -41,7 +83,7 @@
         
         .hover-lift:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
         }
         
         .container {
@@ -60,6 +102,7 @@
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 24px;
+            color: #000000;
         }
         
         h2 {
@@ -67,32 +110,35 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 48px;
+            color: #034f46;
         }
         
         h3 {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 16px;
+            color: #034f46;
         }
         
         .subtitle {
             font-size: 20px;
-            color: #666666;
+            color: #6b7280;
             font-weight: 400;
             line-height: 1.5;
         }
         
         .metric-card {
-            background: #FFFFFF;
-            border: 1px solid #E5E5E5;
-            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
             padding: 40px 32px;
             transition: all 0.3s ease;
         }
         
         .metric-card:hover {
-            border-color: #000000;
+            border-color: #034f46;
             transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
         }
         
         .metric-value {
@@ -101,11 +147,12 @@
             font-weight: 600;
             letter-spacing: -0.03em;
             margin-bottom: 8px;
+            color: #034f46;
         }
         
         .metric-label {
             font-size: 14px;
-            color: #666666;
+            color: #6b7280;
             margin-bottom: 4px;
             font-weight: 500;
         }
@@ -113,7 +160,7 @@
         .metric-delta {
             font-family: 'JetBrains Mono', monospace;
             font-size: 13px;
-            color: #000000;
+            color: #111827;
             font-weight: 500;
         }
         
@@ -121,22 +168,19 @@
             margin-bottom: 80px;
         }
         
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-        }
-        
         .feature-card {
-            background: #FAFAFA;
-            border-radius: 20px;
+            background: #f9fafb;
+            border-radius: 12px;
             padding: 40px;
             transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
         }
         
         .feature-card:hover {
-            background: #F5F5F5;
+            background: #ffffff;
             transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
+            border-color: #034f46;
         }
         
         .timeline-item {
@@ -155,8 +199,8 @@
             top: 0;
             width: 40px;
             height: 40px;
-            background: #000000;
-            color: #FFFFFF;
+            background: #034f46;
+            color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -166,40 +210,62 @@
             font-size: 16px;
         }
         
-        .btn {
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 16px 32px;
-            background: #000000;
-            color: #FFFFFF;
+            background: linear-gradient(135deg, #034f46 0%, #055c52 100%);
+            color: #ffffff;
             border-radius: 12px;
             font-weight: 500;
             font-size: 16px;
             transition: all 0.3s ease;
             text-decoration: none;
+            border: none;
         }
         
-        .btn:hover {
-            background: #333333;
+        .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.2);
         }
         
-        .btn-arrow {
-            width: 20px;
-            height: 20px;
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: #ffffff;
+            color: #034f46;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid #034f46;
+        }
+        
+        .btn-secondary:hover {
+            background: #034f46;
+            color: #ffffff;
+            transform: translateY(-2px);
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 40px 0;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
         }
         
         th {
             text-align: left;
             padding: 20px 16px;
-            border-bottom: 2px solid #000000;
+            background: #034f46;
+            color: #ffffff;
             font-weight: 600;
             font-size: 14px;
             text-transform: uppercase;
@@ -208,8 +274,9 @@
         
         td {
             padding: 20px 16px;
-            border-bottom: 1px solid #E5E5E5;
+            border-bottom: 1px solid #e5e7eb;
             font-size: 15px;
+            color: #111827;
         }
         
         tr:last-child td {
@@ -217,7 +284,7 @@
         }
         
         tr:hover td {
-            background: #FAFAFA;
+            background: #f9fafb;
         }
         
         .badge {
@@ -230,13 +297,18 @@
         }
         
         .badge-check {
-            background: #E8F5E9;
-            color: #2E7D32;
+            background: #e6f7f5;
+            color: #034f46;
         }
         
         .badge-cross {
-            background: #FFEBEE;
-            color: #C62828;
+            background: #fef2f2;
+            color: #ef4444;
+        }
+        
+        .badge-success {
+            background: #d1fae5;
+            color: #057a69;
         }
         
         .comparison-grid {
@@ -250,43 +322,87 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 12px;
+            color: #034f46;
         }
         
         .comparison-item p {
             font-size: 15px;
-            color: #666666;
+            color: #6b7280;
             line-height: 1.7;
         }
         
-        .testimonial-carousel {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            margin: 60px 0;
+        .testimonial-card {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
         
-        .testimonial-card {
-            background: #FAFAFA;
-            border-radius: 20px;
-            padding: 40px;
+        .testimonial-card:hover {
+            background: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(3, 79, 70, 0.08);
+            border-color: #034f46;
         }
         
         .testimonial-text {
             font-size: 16px;
             line-height: 1.7;
             margin-bottom: 24px;
-            color: #000000;
+            color: #111827;
+            font-style: italic;
         }
         
         .testimonial-author {
             font-weight: 600;
             font-size: 14px;
+            color: #034f46;
         }
         
         .testimonial-role {
             font-size: 13px;
-            color: #666666;
+            color: #6b7280;
             margin-top: 4px;
+        }
+        
+        .nav-bar {
+            background: #034f46;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.8;
         }
         
         @media (max-width: 768px) {
@@ -309,25 +425,62 @@
             .comparison-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a href="#" class="nav-logo">Wispr Flow Research</a>
+            <div class="nav-links">
+                <a href="#metrics" class="nav-link">Metrics</a>
+                <a href="#competition" class="nav-link">Competition</a>
+                <a href="#technology" class="nav-link">Technology</a>
+                <a href="#product" class="nav-link">Product</a>
+                <a href="#recommendations" class="nav-link">Recommendations</a>
+            </div>
+            <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" class="btn-secondary" style="padding: 10px 20px; font-size: 14px;">
+                Full Report
+            </a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section style="padding: 160px 0 120px;">
+    <section style="padding: 160px 0 120px; background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);">
         <div class="container">
             <div class="fade-in">
                 <h1>Wispr Flow 2026<br>Market Research</h1>
                 <p class="subtitle" style="max-width: 600px; margin-top: 24px;">
-                    Comprehensive market analysis of the voice-to-text AI landscape. Data confidence: 85-90%. April 7, 2026.
+                    Comprehensive market analysis of the voice-to-text AI landscape. Data confidence: <span style="color: #034f46; font-weight: 600;">85-90%</span>. April 7, 2026.
                 </p>
+                <div style="margin-top: 48px; display: flex; gap: 16px;">
+                    <a href="#metrics" class="btn-primary">
+                        View Analysis
+                        <svg class="btn-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" class="btn-secondary">
+                        Download PDF
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Metrics Section -->
-    <section style="background: #FAFAFA; padding: 80px 0;">
+    <section id="metrics" style="background: #ffffff;">
         <div class="container">
+            <div class="section-header fade-in">
+                <h2>Key Metrics</h2>
+                <p class="subtitle">Performance indicators and market position</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="metric-card fade-in">
                     <div class="metric-value">$81M</div>
@@ -364,7 +517,7 @@
     </section>
 
     <!-- Market Competition -->
-    <section>
+    <section id="competition" style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Market Competition</h2>
@@ -385,14 +538,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background: #FAFAFA;">
-                            <td style="font-weight: 600;">Wispr Flow</td>
+                        <tr style="background: #e6f7f5;">
+                            <td style="font-weight: 600; color: #034f46;">Wispr Flow</td>
                             <td>$81M</td>
                             <td>Mac/Win/iOS/Android</td>
                             <td><span class="badge badge-cross">✕</span></td>
                             <td>$15/mo</td>
                             <td>12.77%</td>
-                            <td>Cross-platform, Enterprise</td>
+                            <td><span class="badge badge-success">Cross-platform, Enterprise</span></td>
                         </tr>
                         <tr>
                             <td>Google Eloquent</td>
@@ -437,7 +590,7 @@
     </section>
 
     <!-- Technology Comparison -->
-    <section style="background: #FAFAFA;">
+    <section id="technology">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Technology Stack</h2>
@@ -457,14 +610,14 @@
             
             <div class="comparison-grid fade-in">
                 <div class="comparison-item">
-                    <h4 style="color: #666666;">Before</h4>
-                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #FFFFFF; padding: 24px; border-radius: 12px; border: 1px solid #E5E5E5;">
+                    <h4 style="color: #6b7280;">Before</h4>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #f9fafb; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
                         "Umm, hope your week has started well… I was talking to Cheyene earlier but reception was really bad and I think their going to handle the first part of the project, but I'm not totally sure..."
                     </p>
                 </div>
                 <div class="comparison-item">
                     <h4>After</h4>
-                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #FFFFFF; padding: 24px; border-radius: 12px; border: 1px solid #000000;">
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; background: #e6f7f5; padding: 24px; border-radius: 12px; border: 1px solid #034f46;">
                         Hope your week is off to a good start. I was talking to Cheyene earlier, but the reception was really bad. I think they're going to handle the first part of the project, but I'm not totally sure.
                     </p>
                 </div>
@@ -473,7 +626,7 @@
     </section>
 
     <!-- Product Evolution -->
-    <section>
+    <section id="product" style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Product Evolution</h2>
@@ -484,60 +637,60 @@
                 <div class="timeline-item">
                     <div class="timeline-number">1</div>
                     <h3>MVP Stage</h3>
-                    <p style="color: #666666; margin-bottom: 16px;">2024 Q4</p>
+                    <p style="color: #6b7280; margin-bottom: 16px;">2024 Q4</p>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Basic voice-to-text</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Cross-app usage</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Auto-punctuation</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Filler word removal</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Basic voice-to-text</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Cross-app usage</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Auto-punctuation</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Filler word removal</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">DAU&gt;1k • Retention&gt;40% • NPS&gt;30</p>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">DAU&gt;1k • Retention&gt;40% • NPS&gt;30</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">2</div>
                     <h3>Growth Stage</h3>
-                    <p style="color: #666666; margin-bottom: 16px;">2025</p>
+                    <p style="color: #6b7280; margin-bottom: 16px;">2025</p>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Windows version</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">iOS version</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Multi-language</span>
-                        <span class="badge" style="background: #000000; color: #FFFFFF;">Enterprise compliance</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Windows version</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">iOS version</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Multi-language</span>
+                        <span class="badge" style="background: #034f46; color: #ffffff;">Enterprise compliance</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">MAU&gt;100k • Conversion&gt;15% • Enterprise&gt;100</p>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;100k • Conversion&gt;15% • Enterprise&gt;100</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">3</div>
                     <h3>Maturity Stage</h3>
-                    <p style="color: #666666; margin-bottom: 16px;">2026-2027</p>
+                    <p style="color: #6b7280; margin-bottom: 16px;">2026-2027</p>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Android version</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Offline mode</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Chinese optimization</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Meeting notes</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Android version</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Offline mode</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Chinese optimization</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Meeting notes</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">MAU&gt;1M • Revenue&gt;$50M • Fortune 500&gt;500</p>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">MAU&gt;1M • Revenue&gt;$50M • Fortune 500&gt;500</p>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-number">4</div>
                     <h3>Platform Stage</h3>
-                    <p style="color: #666666; margin-bottom: 16px;">2028+</p>
+                    <p style="color: #6b7280; margin-bottom: 16px;">2028+</p>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Voice OS</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Multimodal input</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">AR glasses</span>
-                        <span class="badge" style="background: #E5E5E5; color: #666666;">Brain-computer</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Voice OS</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Multimodal input</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">AR glasses</span>
+                        <span class="badge" style="background: #e5e7eb; color: #6b7280;">Brain-computer</span>
                     </div>
-                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;">Valuation&gt;$1B • Market share&gt;20% • Partners&gt;100</p>
+                    <p style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #034f46;">Valuation&gt;$1B • Market share&gt;20% • Partners&gt;100</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SWOT Analysis -->
-    <section style="background: #FAFAFA;">
+    <section>
         <div class="container">
             <div class="section-header fade-in">
                 <h2>SWOT Analysis</h2>
@@ -548,10 +701,10 @@
                 <div class="feature-card">
                     <h3>Strengths</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ Cross-platform coverage (Mac/Win/iOS/Android)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ Enterprise compliance (SOC 2, HIPAA)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ High retention (70% annual)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✓ 270+ Fortune 500 endorsements</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ Cross-platform coverage (Mac/Win/iOS/Android)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ Enterprise compliance (SOC 2, HIPAA)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ High retention (70% annual)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✓ 270+ Fortune 500 endorsements</li>
                         <li style="padding: 8px 0;">✓ Intent-driven transcription</li>
                     </ul>
                 </div>
@@ -559,10 +712,10 @@
                 <div class="feature-card">
                     <h3>Weaknesses</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ CER 12.77% vs Typeless 7%</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Limited Chinese optimization</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Requires internet connection</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">✕ Price-sensitive user churn</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ CER 12.77% vs Typeless 7%</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Limited Chinese optimization</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Requires internet connection</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">✕ Price-sensitive user churn</li>
                         <li style="padding: 8px 0;">✕ Higher learning curve</li>
                     </ul>
                 </div>
@@ -570,10 +723,10 @@
                 <div class="feature-card">
                     <h3>Opportunities</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Chinese market expansion</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Open source integration (FunASR)</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Enterprise customization</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">○ Hardware partnerships</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Chinese market expansion</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Open source integration (FunASR)</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Enterprise customization</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">○ Hardware partnerships</li>
                         <li style="padding: 8px 0;">○ Voice OS vision</li>
                     </ul>
                 </div>
@@ -581,10 +734,10 @@
                 <div class="feature-card">
                     <h3>Threats</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Google free entry</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Open source alternatives</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Price war margins</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #E5E5E5;">⚠ Privacy concerns</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Google free entry</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Open source alternatives</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Price war margins</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">⚠ Privacy concerns</li>
                         <li style="padding: 8px 0;">⚠ Lowered technical barriers</li>
                     </ul>
                 </div>
@@ -593,14 +746,14 @@
     </section>
 
     <!-- Testimonials -->
-    <section>
+    <section style="background: #f9fafb;">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>What Users Say</h2>
                 <p class="subtitle">Real feedback from professionals</p>
             </div>
             
-            <div class="testimonial-carousel fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"I was able to dictate ~70% of our Q2 board doc with Wispr, it was a massive time saver!"</p>
                     <div class="testimonial-author">Jeff Seibert</div>
@@ -623,7 +776,7 @@
     </section>
 
     <!-- Recommendations -->
-    <section style="background: #FAFAFA;">
+    <section id="recommendations">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Strategic Recommendations</h2>
@@ -631,63 +784,63 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
-                <div class="feature-card" style="background: #FFFFFF;">
-                    <h3 style="color: #C62828;">Short-term (2026)</h3>
+                <div class="feature-card" style="background: #ffffff;">
+                    <h3 style="color: #ef4444;">Short-term (2026)</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Integrate FunASR for Chinese</span>
                         </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Launch offline enterprise version</span>
                         </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Reduce error rate to &lt;5%</span>
                         </li>
                         <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Android tablet optimization</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="feature-card" style="background: #FFFFFF;">
-                    <h3 style="color: #F57C00;">Mid-term (2027)</h3>
+                <div class="feature-card" style="background: #ffffff;">
+                    <h3 style="color: #f59e0b;">Mid-term (2027)</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Voice OS strategy launch</span>
                         </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Meeting notes feature</span>
                         </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>API access</span>
                         </li>
                         <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Real-time translation</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="feature-card" style="background: #FFFFFF;">
-                    <h3 style="color: #2E7D32;">Long-term (2028-2030)</h3>
+                <div class="feature-card" style="background: #ffffff;">
+                    <h3 style="color: #10b981;">Long-term (2028-2030)</h3>
                     <ul style="list-style: none; margin-top: 16px;">
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Brain-computer interface R&D</span>
                         </li>
-                        <li style="padding: 10px 0; border-bottom: 1px solid #E5E5E5; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                        <li style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start;">
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>AR glasses partnership</span>
                         </li>
                         <li style="padding: 10px 0; display: flex; align-items: flex-start;">
-                            <span style="color: #000000; margin-right: 8px;">→</span>
+                            <span style="color: #034f46; margin-right: 8px;">→</span>
                             <span>Hardware self-development</span>
                         </li>
                     </ul>
@@ -697,19 +850,19 @@
     </section>
 
     <!-- Footer -->
-    <section style="padding: 80px 0; border-top: 1px solid #E5E5E5;">
+    <section style="padding: 80px 0; border-top: 1px solid #e5e7eb; background: #ffffff;">
         <div class="container">
             <div class="fade-in">
-                <p style="font-size: 14px; color: #666666; margin-bottom: 8px;">
+                <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">
                     Data Sources: 2 independent CSV files, 251 search results | Confidence: 85-90%
                 </p>
-                <p style="font-size: 14px; color: #666666; margin-bottom: 8px;">
+                <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">
                     Report Date: April 7, 2026 | Analyst: Little Shrimp 🦐
                 </p>
-                <p style="font-size: 14px; color: #666666; margin-bottom: 24px;">
-                    <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" style="color: #000000; text-decoration: underline;">View Full Report on Feishu</a>
+                <p style="font-size: 14px; color: #6b7280; margin-bottom: 24px;">
+                    <a href="https://www.feishu.cn/docx/LNIPdvtjCoGmaFx3XJocWk2ln6f" target="_blank" style="color: #034f46; text-decoration: underline; font-weight: 500;">View Full Report on Feishu</a>
                 </p>
-                <p style="font-size: 13px; color: #999999;">
+                <p style="font-size: 13px; color: #9ca3af;">
                     ⚠️ This report is for reference only and does not constitute investment advice
                 </p>
             </div>
@@ -730,6 +883,20 @@
         );
         
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
